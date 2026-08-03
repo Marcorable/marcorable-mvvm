@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <Group
+      location = "group:Docs"
+      name = "Docs">
+      <FileRef
+         location = "group:COMPARISON.md">
+      </FileRef>
+   </Group>
+   <Group
+      location = "group:Examples"
+      name = "Examples">
+      <FileRef
+         location = "group:CoordinatorMVVM/CoordinatorMVVM.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:SwiftUIClassic/SwiftUIClassic.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:SwiftUIObservable/SwiftUIObservable.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:UIKitClosure/UIKitClosure.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:UIKitCombine/UIKitCombine.xcodeproj">
+      </FileRef>
+   </Group>
+   <Group
+      location = "group:Packages"
+      name = "Packages">
+      <FileRef
+         location = "group:SharedKit">
+      </FileRef>
+   </Group>
+   <FileRef
+      location = "group:README.md">
+   </FileRef>
+</Workspace>
