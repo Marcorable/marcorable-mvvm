@@ -5,7 +5,7 @@
 ## 프로젝트 관리 (Tuist)
 
 - 프로젝트 파일 재생성은 반드시 `Scripts/generate.sh` 사용 (`tuist generate` 단독 실행 금지 —
-  'Project' 래퍼 그룹 평탄화 후처리가 빠진다).
+  가상 그룹('Project' 래퍼, 'Packages', 'Products') 정리 후처리가 빠져 네비게이터가 지저분해진다).
 - 모든 타깃은 그룹이 아닌 **폴더(synchronized folder, `buildableFolders`)** 로 관리한다.
   pbxproj에 파일 참조를 직접 추가하지 않는다. 파일 추가/삭제는 디스크에서만 하면 된다.
 - Info.plist 파일을 만들지 않는다. `GENERATE_INFOPLIST_FILE = YES` + `INFOPLIST_KEY_*` 빌드 설정으로
@@ -38,7 +38,8 @@
 
 ## 검증
 
-- 변경 후에는 5개 스킴 전부 테스트: `xcodebuild -workspace MarcorableMVVM.xcworkspace -scheme <스킴> -destination 'platform=iOS Simulator,name=iPhone 17 Pro' test`
+- 변경 후에는 4개 스킴(UIKit+Published, UIKit+Transform, SwiftUI+Published, SwiftUI+Observable) 전부 테스트
+  (스킴명에 '+'가 있으니 따옴표로 감싼다. 모듈명은 '+' 제거형: UIKitPublished 등): `xcodebuild -workspace MarcorableMVVM.xcworkspace -scheme <스킴> -destination 'platform=iOS Simulator,name=iPhone 17 Pro' test`
 - SharedKit 단독 검증은 `Packages/SharedKit`에서 `swift test`.
 - 시뮬레이터가 앱 실행을 거부하는 간헐적 플레이크("failed preflight checks" / Busy)가 있다 —
   코드 문제가 아니므로 해당 스킴만 재시도한다.

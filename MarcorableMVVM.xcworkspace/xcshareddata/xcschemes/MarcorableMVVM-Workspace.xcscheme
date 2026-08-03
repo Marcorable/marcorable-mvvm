@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "045FA4C6006D2FA443E0218A"
-               BuildableName = "CoordinatorMVVM.app"
-               BlueprintName = "CoordinatorMVVM"
-               ReferencedContainer = "container:Examples/CoordinatorMVVM/CoordinatorMVVM.xcodeproj">
+               BlueprintIdentifier = "2E9480E6CC3DFA3051198A00"
+               BuildableName = "SwiftUI+Observable.app"
+               BlueprintName = "SwiftUI+Observable"
+               ReferencedContainer = "container:Examples/SwiftUI+Observable/SwiftUI+Observable.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -28,10 +28,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "76284251D858C349DEC67A67"
-               BuildableName = "CoordinatorMVVMTests.xctest"
-               BlueprintName = "CoordinatorMVVMTests"
-               ReferencedContainer = "container:Examples/CoordinatorMVVM/CoordinatorMVVM.xcodeproj">
+               BlueprintIdentifier = "DAB1E508C96D0FBD52AD1B1F"
+               BuildableName = "SwiftUI+ObservableTests.xctest"
+               BlueprintName = "SwiftUI+ObservableTests"
+               ReferencedContainer = "container:Examples/SwiftUI+Observable/SwiftUI+Observable.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -42,10 +42,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D808B0A2DB9187E516166E79"
-               BuildableName = "SwiftUIClassic.app"
-               BlueprintName = "SwiftUIClassic"
-               ReferencedContainer = "container:Examples/SwiftUIClassic/SwiftUIClassic.xcodeproj">
+               BlueprintIdentifier = "021E19B6FE5CA5818DD56B5F"
+               BuildableName = "SwiftUI+Published.app"
+               BlueprintName = "SwiftUI+Published"
+               ReferencedContainer = "container:Examples/SwiftUI+Published/SwiftUI+Published.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -56,10 +56,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "DED1335B1FE335E58D96A907"
-               BuildableName = "SwiftUIClassicTests.xctest"
-               BlueprintName = "SwiftUIClassicTests"
-               ReferencedContainer = "container:Examples/SwiftUIClassic/SwiftUIClassic.xcodeproj">
+               BlueprintIdentifier = "AC4D1CE616F5432BF726786D"
+               BuildableName = "SwiftUI+PublishedTests.xctest"
+               BlueprintName = "SwiftUI+PublishedTests"
+               ReferencedContainer = "container:Examples/SwiftUI+Published/SwiftUI+Published.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -70,10 +70,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "BBD3B3110315C31CA6365884"
-               BuildableName = "SwiftUIObservable.app"
-               BlueprintName = "SwiftUIObservable"
-               ReferencedContainer = "container:Examples/SwiftUIObservable/SwiftUIObservable.xcodeproj">
+               BlueprintIdentifier = "7FA91F6523879FD7018A9D30"
+               BuildableName = "UIKit+Published.app"
+               BlueprintName = "UIKit+Published"
+               ReferencedContainer = "container:Examples/UIKit+Published/UIKit+Published.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -84,10 +84,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "9EAAA517189F1FAC84D12469"
-               BuildableName = "SwiftUIObservableTests.xctest"
-               BlueprintName = "SwiftUIObservableTests"
-               ReferencedContainer = "container:Examples/SwiftUIObservable/SwiftUIObservable.xcodeproj">
+               BlueprintIdentifier = "6209797DF046B1F8C5AE0E91"
+               BuildableName = "UIKit+PublishedTests.xctest"
+               BlueprintName = "UIKit+PublishedTests"
+               ReferencedContainer = "container:Examples/UIKit+Published/UIKit+Published.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -98,10 +98,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "1C7CA8477EA2DA9AA5414940"
-               BuildableName = "UIKitClosure.app"
-               BlueprintName = "UIKitClosure"
-               ReferencedContainer = "container:Examples/UIKitClosure/UIKitClosure.xcodeproj">
+               BlueprintIdentifier = "C86CB75385952BB1D1E527A4"
+               BuildableName = "UIKit+Transform.app"
+               BlueprintName = "UIKit+Transform"
+               ReferencedContainer = "container:Examples/UIKit+Transform/UIKit+Transform.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -112,38 +112,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "51B845AD6DD2496138962304"
-               BuildableName = "UIKitClosureTests.xctest"
-               BlueprintName = "UIKitClosureTests"
-               ReferencedContainer = "container:Examples/UIKitClosure/UIKitClosure.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "B590B8D76765A2C007CADD5A"
-               BuildableName = "UIKitCombine.app"
-               BlueprintName = "UIKitCombine"
-               ReferencedContainer = "container:Examples/UIKitCombine/UIKitCombine.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "AAA4BAF57F43F890D4F78C11"
-               BuildableName = "UIKitCombineTests.xctest"
-               BlueprintName = "UIKitCombineTests"
-               ReferencedContainer = "container:Examples/UIKitCombine/UIKitCombine.xcodeproj">
+               BlueprintIdentifier = "8F85D5B599F20E196D63E39E"
+               BuildableName = "UIKit+TransformTests.xctest"
+               BlueprintName = "UIKit+TransformTests"
+               ReferencedContainer = "container:Examples/UIKit+Transform/UIKit+Transform.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -159,10 +131,10 @@
             parallelizable = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "76284251D858C349DEC67A67"
-               BuildableName = "CoordinatorMVVMTests.xctest"
-               BlueprintName = "CoordinatorMVVMTests"
-               ReferencedContainer = "container:Examples/CoordinatorMVVM/CoordinatorMVVM.xcodeproj">
+               BlueprintIdentifier = "DAB1E508C96D0FBD52AD1B1F"
+               BuildableName = "SwiftUI+ObservableTests.xctest"
+               BlueprintName = "SwiftUI+ObservableTests"
+               ReferencedContainer = "container:Examples/SwiftUI+Observable/SwiftUI+Observable.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -170,10 +142,10 @@
             parallelizable = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "DED1335B1FE335E58D96A907"
-               BuildableName = "SwiftUIClassicTests.xctest"
-               BlueprintName = "SwiftUIClassicTests"
-               ReferencedContainer = "container:Examples/SwiftUIClassic/SwiftUIClassic.xcodeproj">
+               BlueprintIdentifier = "AC4D1CE616F5432BF726786D"
+               BuildableName = "SwiftUI+PublishedTests.xctest"
+               BlueprintName = "SwiftUI+PublishedTests"
+               ReferencedContainer = "container:Examples/SwiftUI+Published/SwiftUI+Published.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -181,10 +153,10 @@
             parallelizable = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "9EAAA517189F1FAC84D12469"
-               BuildableName = "SwiftUIObservableTests.xctest"
-               BlueprintName = "SwiftUIObservableTests"
-               ReferencedContainer = "container:Examples/SwiftUIObservable/SwiftUIObservable.xcodeproj">
+               BlueprintIdentifier = "6209797DF046B1F8C5AE0E91"
+               BuildableName = "UIKit+PublishedTests.xctest"
+               BlueprintName = "UIKit+PublishedTests"
+               ReferencedContainer = "container:Examples/UIKit+Published/UIKit+Published.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -192,21 +164,10 @@
             parallelizable = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "51B845AD6DD2496138962304"
-               BuildableName = "UIKitClosureTests.xctest"
-               BlueprintName = "UIKitClosureTests"
-               ReferencedContainer = "container:Examples/UIKitClosure/UIKitClosure.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO"
-            parallelizable = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "AAA4BAF57F43F890D4F78C11"
-               BuildableName = "UIKitCombineTests.xctest"
-               BlueprintName = "UIKitCombineTests"
-               ReferencedContainer = "container:Examples/UIKitCombine/UIKitCombine.xcodeproj">
+               BlueprintIdentifier = "8F85D5B599F20E196D63E39E"
+               BuildableName = "UIKit+TransformTests.xctest"
+               BlueprintName = "UIKit+TransformTests"
+               ReferencedContainer = "container:Examples/UIKit+Transform/UIKit+Transform.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -225,10 +186,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "045FA4C6006D2FA443E0218A"
-            BuildableName = "CoordinatorMVVM.app"
-            BlueprintName = "CoordinatorMVVM"
-            ReferencedContainer = "container:Examples/CoordinatorMVVM/CoordinatorMVVM.xcodeproj">
+            BlueprintIdentifier = "2E9480E6CC3DFA3051198A00"
+            BuildableName = "SwiftUI+Observable.app"
+            BlueprintName = "SwiftUI+Observable"
+            ReferencedContainer = "container:Examples/SwiftUI+Observable/SwiftUI+Observable.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -242,10 +203,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "045FA4C6006D2FA443E0218A"
-            BuildableName = "CoordinatorMVVM.app"
-            BlueprintName = "CoordinatorMVVM"
-            ReferencedContainer = "container:Examples/CoordinatorMVVM/CoordinatorMVVM.xcodeproj">
+            BlueprintIdentifier = "2E9480E6CC3DFA3051198A00"
+            BuildableName = "SwiftUI+Observable.app"
+            BlueprintName = "SwiftUI+Observable"
+            ReferencedContainer = "container:Examples/SwiftUI+Observable/SwiftUI+Observable.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

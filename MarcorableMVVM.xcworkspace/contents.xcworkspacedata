@@ -12,19 +12,16 @@
       location = "group:Examples"
       name = "Examples">
       <FileRef
-         location = "group:CoordinatorMVVM/CoordinatorMVVM.xcodeproj">
+         location = "group:SwiftUI+Observable/SwiftUI+Observable.xcodeproj">
       </FileRef>
       <FileRef
-         location = "group:SwiftUIClassic/SwiftUIClassic.xcodeproj">
+         location = "group:SwiftUI+Published/SwiftUI+Published.xcodeproj">
       </FileRef>
       <FileRef
-         location = "group:SwiftUIObservable/SwiftUIObservable.xcodeproj">
+         location = "group:UIKit+Published/UIKit+Published.xcodeproj">
       </FileRef>
       <FileRef
-         location = "group:UIKitClosure/UIKitClosure.xcodeproj">
-      </FileRef>
-      <FileRef
-         location = "group:UIKitCombine/UIKitCombine.xcodeproj">
+         location = "group:UIKit+Transform/UIKit+Transform.xcodeproj">
       </FileRef>
    </Group>
    <Group

@@ -2,7 +2,7 @@
 
 MVVM 디자인패턴을 다양하게 고민해본다.
 
-같은 앱(GitHub 유저 검색 → 상세)을 다섯 가지 MVVM 변형으로 구현하고, 한 워크스페이스에서 나란히 비교하는 저장소.
+같은 앱(GitHub 유저 검색 → 상세)을 네 가지 MVVM 변형으로 구현하고, 한 워크스페이스에서 나란히 비교하는 저장소.
 Domain/Data 레이어는 `SharedKit` 패키지로 공유하므로, 프로젝트 간 차이는 순수하게 바인딩 방식의 차이다.
 
 ## 구조
@@ -11,11 +11,10 @@ Domain/Data 레이어는 `SharedKit` 패키지로 공유하므로, 프로젝트 
 MarcorableMVVM.xcworkspace
 ├── Packages/SharedKit        # 공유 Domain(모델·프로토콜) + Data(GitHub API·Mock)
 ├── Examples/
-│   ├── UIKitClosure          # 클로저 바인딩 (기본형, 의존성 없음)
-│   ├── UIKitCombine          # Combine Input/Output transform 패턴
-│   ├── SwiftUIClassic        # ObservableObject + @Published
-│   ├── SwiftUIObservable     # @Observable (iOS 17+), 순수 async/await
-│   └── CoordinatorMVVM       # MVVM-C: 내비게이션을 Coordinator로 분리
+│   ├── UIKit+Published       # @Published 상태를 VC가 직접 구독 (기본형)
+│   ├── UIKit+Transform       # Combine Input/Output transform 패턴
+│   ├── SwiftUI+Published     # ObservableObject + @Published
+│   └── SwiftUI+Observable    # @Observable (iOS 17+), 순수 async/await
 └── Docs/COMPARISON.md        # 변형 간 비교와 관전 포인트
 ```
 
@@ -31,7 +30,8 @@ MarcorableMVVM.xcworkspace
 Scripts/generate.sh
 ```
 
-(`tuist generate` 후 Tuist가 만드는 가상 'Project' 래퍼 그룹을 평탄화하는 후처리까지 수행한다.
+(`tuist generate` 후 Tuist가 만드는 표시용 가상 그룹('Project' 래퍼, 'Packages', 'Products')을
+정리하는 후처리까지 수행해, 네비게이터에 Sources/Tests 폴더만 남긴다.
 모든 소스는 그룹이 아닌 폴더(synchronized folder)로 관리되므로,
 Xcode에서 파일을 추가/삭제해도 프로젝트 재생성이 필요 없다.)
 
