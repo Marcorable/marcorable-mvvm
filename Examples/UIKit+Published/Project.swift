@@ -1,0 +1,45 @@
+import ProjectDescription
+
+let project = Project(
+    name: "UIKit+Published",
+    packages: [
+        .local(path: "../../Packages/SharedKit")
+    ],
+    targets: [
+        .target(
+            name: "UIKit+Published",
+            destinations: [.iPhone],
+            product: .app,
+            bundleId: "com.marcorable.mvvm.uikitpublished",
+            deploymentTargets: .iOS("17.0"),
+            infoPlist: nil,
+            buildableFolders: ["Sources"],
+            dependencies: [
+                .package(product: "SharedKit")
+            ],
+            settings: .settings(base: [
+                "GENERATE_INFOPLIST_FILE": "YES",
+                "INFOPLIST_KEY_UILaunchScreen_Generation": "YES",
+                "INFOPLIST_KEY_UIApplicationSceneManifest_Generation": "YES",
+                // '+'는 Swift 모듈명에 쓸 수 없으므로 모듈명을 따로 지정한다.
+                "PRODUCT_MODULE_NAME": "UIKitPublished",
+            ])
+        ),
+        .target(
+            name: "UIKit+PublishedTests",
+            destinations: [.iPhone],
+            product: .unitTests,
+            bundleId: "com.marcorable.mvvm.uikitpublished.tests",
+            deploymentTargets: .iOS("17.0"),
+            infoPlist: nil,
+            buildableFolders: ["Tests"],
+            dependencies: [
+                .target(name: "UIKit+Published")
+            ],
+            settings: .settings(base: [
+                "GENERATE_INFOPLIST_FILE": "YES",
+                "PRODUCT_MODULE_NAME": "UIKitPublishedTests",
+            ])
+        ),
+    ]
+)
