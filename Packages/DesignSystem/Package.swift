@@ -8,6 +8,7 @@ let package = Package(
         .library(name: "DesignSystem", targets: ["DesignSystem"])
     ],
     targets: [
-        .target(name: "DesignSystem")
+        // 단일 타깃이므로 기본 규칙(Sources/<타깃명>/) 대신 Sources/를 바로 사용한다.
+        .target(name: "DesignSystem", path: "Sources")
     ]
 )
