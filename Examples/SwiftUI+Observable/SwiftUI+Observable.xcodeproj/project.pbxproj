@@ -46,8 +46,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		213B62370017E0EEEAA3E972 /* SwiftUI+ObservableTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SwiftUI+ObservableTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		71DA98FC25E21B5E2F1EE0BC /* SwiftUI+Observable.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SwiftUI+Observable.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		03CD3A71FD24DBC2B3A45C52 /* SwiftUIObservable.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftUIObservable.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1EE3558135318CAC6CC6AB9B /* SwiftUIObservableTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftUIObservableTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -125,8 +125,8 @@
 				162321A19EFDB9DBE81D609F /* MarcorableMVVM */,
 				620D7C38BEFBFC2D9FD78417 /* SharedKit */,
 			);
-			productName = "SwiftUI+Observable";
-			productReference = 71DA98FC25E21B5E2F1EE0BC /* SwiftUI+Observable.app */;
+			productName = SwiftUIObservable;
+			productReference = 03CD3A71FD24DBC2B3A45C52 /* SwiftUIObservable.app */;
 			productType = "com.apple.product-type.application";
 		};
 		DAB1E508C96D0FBD52AD1B1F /* SwiftUI+ObservableTests */ = {
@@ -149,8 +149,8 @@
 			name = "SwiftUI+ObservableTests";
 			packageProductDependencies = (
 			);
-			productName = "SwiftUI+ObservableTests";
-			productReference = 213B62370017E0EEEAA3E972 /* SwiftUI+ObservableTests.xctest */;
+			productName = SwiftUIObservableTests;
+			productReference = 1EE3558135318CAC6CC6AB9B /* SwiftUIObservableTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -303,8 +303,7 @@
 					"-L$(DT_TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME)",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.marcorable.mvvm.swiftuiobservable.tests;
-				PRODUCT_MODULE_NAME = SwiftUIObservableTests;
-				PRODUCT_NAME = "SwiftUI+ObservableTests";
+				PRODUCT_NAME = SwiftUIObservableTests;
 				SDKROOT = iphoneos;
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -317,7 +316,7 @@
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5;
 				TARGETED_DEVICE_FAMILY = 1;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SwiftUI+Observable.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/SwiftUI+Observable";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SwiftUIObservable.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/SwiftUIObservable";
 				TEST_TARGET_NAME = "SwiftUI+Observable";
 			};
 			name = Debug;
@@ -339,8 +338,7 @@
 					"-L$(DT_TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME)",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.marcorable.mvvm.swiftuiobservable.tests;
-				PRODUCT_MODULE_NAME = SwiftUIObservableTests;
-				PRODUCT_NAME = "SwiftUI+ObservableTests";
+				PRODUCT_NAME = SwiftUIObservableTests;
 				SDKROOT = iphoneos;
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -349,7 +347,7 @@
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5;
 				TARGETED_DEVICE_FAMILY = 1;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SwiftUI+Observable.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/SwiftUI+Observable";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SwiftUIObservable.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/SwiftUIObservable";
 				TEST_TARGET_NAME = "SwiftUI+Observable";
 			};
 			name = Release;
@@ -421,6 +419,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "SwiftUI+Observable";
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -432,8 +431,7 @@
 					"-L$(DT_TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME)",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.marcorable.mvvm.swiftuiobservable;
-				PRODUCT_MODULE_NAME = SwiftUIObservable;
-				PRODUCT_NAME = "SwiftUI+Observable";
+				PRODUCT_NAME = SwiftUIObservable;
 				SDKROOT = iphoneos;
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -457,6 +455,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "SwiftUI+Observable";
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -468,8 +467,7 @@
 					"-L$(DT_TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME)",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.marcorable.mvvm.swiftuiobservable;
-				PRODUCT_MODULE_NAME = SwiftUIObservable;
-				PRODUCT_NAME = "SwiftUI+Observable";
+				PRODUCT_NAME = SwiftUIObservable;
 				SDKROOT = iphoneos;
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;

@@ -46,8 +46,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		8AE28D6DFA5C8048A3FD604F /* UIKit+PublishedTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "UIKit+PublishedTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		E730E696302C41EC7D6D7822 /* UIKit+Published.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "UIKit+Published.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		07C220D82B9A54F8D908DE18 /* UIKitPublishedTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UIKitPublishedTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		094C39172C2DAFC84C28A935 /* UIKitPublished.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UIKitPublished.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -123,8 +123,8 @@
 			name = "UIKit+PublishedTests";
 			packageProductDependencies = (
 			);
-			productName = "UIKit+PublishedTests";
-			productReference = 8AE28D6DFA5C8048A3FD604F /* UIKit+PublishedTests.xctest */;
+			productName = UIKitPublishedTests;
+			productReference = 07C220D82B9A54F8D908DE18 /* UIKitPublishedTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		7FA91F6523879FD7018A9D30 /* UIKit+Published */ = {
@@ -149,8 +149,8 @@
 				DBAACF9624229C490EB73F5F /* MarcorableMVVM */,
 				929A21ACB264E24152878BA1 /* SharedKit */,
 			);
-			productName = "UIKit+Published";
-			productReference = E730E696302C41EC7D6D7822 /* UIKit+Published.app */;
+			productName = UIKitPublished;
+			productReference = 094C39172C2DAFC84C28A935 /* UIKitPublished.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -294,6 +294,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "UIKit+Published";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
@@ -306,8 +307,7 @@
 					"-L$(DT_TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME)",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.marcorable.mvvm.uikitpublished;
-				PRODUCT_MODULE_NAME = UIKitPublished;
-				PRODUCT_NAME = "UIKit+Published";
+				PRODUCT_NAME = UIKitPublished;
 				SDKROOT = iphoneos;
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -327,6 +327,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "UIKit+Published";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
@@ -339,8 +340,7 @@
 					"-L$(DT_TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME)",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.marcorable.mvvm.uikitpublished;
-				PRODUCT_MODULE_NAME = UIKitPublished;
-				PRODUCT_NAME = "UIKit+Published";
+				PRODUCT_NAME = UIKitPublished;
 				SDKROOT = iphoneos;
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -373,8 +373,7 @@
 					"-L$(DT_TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME)",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.marcorable.mvvm.uikitpublished.tests;
-				PRODUCT_MODULE_NAME = UIKitPublishedTests;
-				PRODUCT_NAME = "UIKit+PublishedTests";
+				PRODUCT_NAME = UIKitPublishedTests;
 				SDKROOT = iphoneos;
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -387,7 +386,7 @@
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5;
 				TARGETED_DEVICE_FAMILY = 1;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/UIKit+Published.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/UIKit+Published";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/UIKitPublished.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/UIKitPublished";
 				TEST_TARGET_NAME = "UIKit+Published";
 			};
 			name = Debug;
@@ -468,8 +467,7 @@
 					"-L$(DT_TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME)",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.marcorable.mvvm.uikitpublished.tests;
-				PRODUCT_MODULE_NAME = UIKitPublishedTests;
-				PRODUCT_NAME = "UIKit+PublishedTests";
+				PRODUCT_NAME = UIKitPublishedTests;
 				SDKROOT = iphoneos;
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -478,7 +476,7 @@
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5;
 				TARGETED_DEVICE_FAMILY = 1;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/UIKit+Published.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/UIKit+Published";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/UIKitPublished.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/UIKitPublished";
 				TEST_TARGET_NAME = "UIKit+Published";
 			};
 			name = Release;

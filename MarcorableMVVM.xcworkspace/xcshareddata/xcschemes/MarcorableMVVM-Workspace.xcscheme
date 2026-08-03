@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2E9480E6CC3DFA3051198A00"
-               BuildableName = "SwiftUI+Observable.app"
+               BuildableName = "SwiftUIObservable.app"
                BlueprintName = "SwiftUI+Observable"
                ReferencedContainer = "container:Examples/SwiftUI+Observable/SwiftUI+Observable.xcodeproj">
             </BuildableReference>
@@ -29,7 +29,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "DAB1E508C96D0FBD52AD1B1F"
-               BuildableName = "SwiftUI+ObservableTests.xctest"
+               BuildableName = "SwiftUIObservableTests.xctest"
                BlueprintName = "SwiftUI+ObservableTests"
                ReferencedContainer = "container:Examples/SwiftUI+Observable/SwiftUI+Observable.xcodeproj">
             </BuildableReference>
@@ -43,7 +43,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "021E19B6FE5CA5818DD56B5F"
-               BuildableName = "SwiftUI+Published.app"
+               BuildableName = "SwiftUIPublished.app"
                BlueprintName = "SwiftUI+Published"
                ReferencedContainer = "container:Examples/SwiftUI+Published/SwiftUI+Published.xcodeproj">
             </BuildableReference>
@@ -57,7 +57,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "AC4D1CE616F5432BF726786D"
-               BuildableName = "SwiftUI+PublishedTests.xctest"
+               BuildableName = "SwiftUIPublishedTests.xctest"
                BlueprintName = "SwiftUI+PublishedTests"
                ReferencedContainer = "container:Examples/SwiftUI+Published/SwiftUI+Published.xcodeproj">
             </BuildableReference>
@@ -71,7 +71,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "7FA91F6523879FD7018A9D30"
-               BuildableName = "UIKit+Published.app"
+               BuildableName = "UIKitPublished.app"
                BlueprintName = "UIKit+Published"
                ReferencedContainer = "container:Examples/UIKit+Published/UIKit+Published.xcodeproj">
             </BuildableReference>
@@ -85,7 +85,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "6209797DF046B1F8C5AE0E91"
-               BuildableName = "UIKit+PublishedTests.xctest"
+               BuildableName = "UIKitPublishedTests.xctest"
                BlueprintName = "UIKit+PublishedTests"
                ReferencedContainer = "container:Examples/UIKit+Published/UIKit+Published.xcodeproj">
             </BuildableReference>
@@ -99,7 +99,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "C86CB75385952BB1D1E527A4"
-               BuildableName = "UIKit+Transform.app"
+               BuildableName = "UIKitTransform.app"
                BlueprintName = "UIKit+Transform"
                ReferencedContainer = "container:Examples/UIKit+Transform/UIKit+Transform.xcodeproj">
             </BuildableReference>
@@ -113,7 +113,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "8F85D5B599F20E196D63E39E"
-               BuildableName = "UIKit+TransformTests.xctest"
+               BuildableName = "UIKitTransformTests.xctest"
                BlueprintName = "UIKit+TransformTests"
                ReferencedContainer = "container:Examples/UIKit+Transform/UIKit+Transform.xcodeproj">
             </BuildableReference>
@@ -132,7 +132,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "DAB1E508C96D0FBD52AD1B1F"
-               BuildableName = "SwiftUI+ObservableTests.xctest"
+               BuildableName = "SwiftUIObservableTests.xctest"
                BlueprintName = "SwiftUI+ObservableTests"
                ReferencedContainer = "container:Examples/SwiftUI+Observable/SwiftUI+Observable.xcodeproj">
             </BuildableReference>
@@ -143,7 +143,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "AC4D1CE616F5432BF726786D"
-               BuildableName = "SwiftUI+PublishedTests.xctest"
+               BuildableName = "SwiftUIPublishedTests.xctest"
                BlueprintName = "SwiftUI+PublishedTests"
                ReferencedContainer = "container:Examples/SwiftUI+Published/SwiftUI+Published.xcodeproj">
             </BuildableReference>
@@ -154,7 +154,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "6209797DF046B1F8C5AE0E91"
-               BuildableName = "UIKit+PublishedTests.xctest"
+               BuildableName = "UIKitPublishedTests.xctest"
                BlueprintName = "UIKit+PublishedTests"
                ReferencedContainer = "container:Examples/UIKit+Published/UIKit+Published.xcodeproj">
             </BuildableReference>
@@ -165,7 +165,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "8F85D5B599F20E196D63E39E"
-               BuildableName = "UIKit+TransformTests.xctest"
+               BuildableName = "UIKitTransformTests.xctest"
                BlueprintName = "UIKit+TransformTests"
                ReferencedContainer = "container:Examples/UIKit+Transform/UIKit+Transform.xcodeproj">
             </BuildableReference>
@@ -187,7 +187,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2E9480E6CC3DFA3051198A00"
-            BuildableName = "SwiftUI+Observable.app"
+            BuildableName = "SwiftUIObservable.app"
             BlueprintName = "SwiftUI+Observable"
             ReferencedContainer = "container:Examples/SwiftUI+Observable/SwiftUI+Observable.xcodeproj">
          </BuildableReference>
@@ -204,7 +204,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2E9480E6CC3DFA3051198A00"
-            BuildableName = "SwiftUI+Observable.app"
+            BuildableName = "SwiftUIObservable.app"
             BlueprintName = "SwiftUI+Observable"
             ReferencedContainer = "container:Examples/SwiftUI+Observable/SwiftUI+Observable.xcodeproj">
          </BuildableReference>

@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2E9480E6CC3DFA3051198A00"
-               BuildableName = "SwiftUI+Observable.app"
+               BuildableName = "SwiftUIObservable.app"
                BlueprintName = "SwiftUI+Observable"
                ReferencedContainer = "container:SwiftUI+Observable.xcodeproj">
             </BuildableReference>
@@ -34,7 +34,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "DAB1E508C96D0FBD52AD1B1F"
-               BuildableName = "SwiftUI+ObservableTests.xctest"
+               BuildableName = "SwiftUIObservableTests.xctest"
                BlueprintName = "SwiftUI+ObservableTests"
                ReferencedContainer = "container:SwiftUI+Observable.xcodeproj">
             </BuildableReference>
@@ -56,7 +56,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2E9480E6CC3DFA3051198A00"
-            BuildableName = "SwiftUI+Observable.app"
+            BuildableName = "SwiftUIObservable.app"
             BlueprintName = "SwiftUI+Observable"
             ReferencedContainer = "container:SwiftUI+Observable.xcodeproj">
          </BuildableReference>
@@ -73,7 +73,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2E9480E6CC3DFA3051198A00"
-            BuildableName = "SwiftUI+Observable.app"
+            BuildableName = "SwiftUIObservable.app"
             BlueprintName = "SwiftUI+Observable"
             ReferencedContainer = "container:SwiftUI+Observable.xcodeproj">
          </BuildableReference>

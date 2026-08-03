@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "021E19B6FE5CA5818DD56B5F"
-               BuildableName = "SwiftUI+Published.app"
+               BuildableName = "SwiftUIPublished.app"
                BlueprintName = "SwiftUI+Published"
                ReferencedContainer = "container:SwiftUI+Published.xcodeproj">
             </BuildableReference>
@@ -34,7 +34,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "AC4D1CE616F5432BF726786D"
-               BuildableName = "SwiftUI+PublishedTests.xctest"
+               BuildableName = "SwiftUIPublishedTests.xctest"
                BlueprintName = "SwiftUI+PublishedTests"
                ReferencedContainer = "container:SwiftUI+Published.xcodeproj">
             </BuildableReference>
@@ -56,7 +56,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "021E19B6FE5CA5818DD56B5F"
-            BuildableName = "SwiftUI+Published.app"
+            BuildableName = "SwiftUIPublished.app"
             BlueprintName = "SwiftUI+Published"
             ReferencedContainer = "container:SwiftUI+Published.xcodeproj">
          </BuildableReference>
@@ -73,7 +73,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "021E19B6FE5CA5818DD56B5F"
-            BuildableName = "SwiftUI+Published.app"
+            BuildableName = "SwiftUIPublished.app"
             BlueprintName = "SwiftUI+Published"
             ReferencedContainer = "container:SwiftUI+Published.xcodeproj">
          </BuildableReference>

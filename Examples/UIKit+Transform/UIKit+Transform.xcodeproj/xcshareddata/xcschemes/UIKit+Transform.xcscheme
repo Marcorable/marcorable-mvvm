@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "C86CB75385952BB1D1E527A4"
-               BuildableName = "UIKit+Transform.app"
+               BuildableName = "UIKitTransform.app"
                BlueprintName = "UIKit+Transform"
                ReferencedContainer = "container:UIKit+Transform.xcodeproj">
             </BuildableReference>
@@ -34,7 +34,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "8F85D5B599F20E196D63E39E"
-               BuildableName = "UIKit+TransformTests.xctest"
+               BuildableName = "UIKitTransformTests.xctest"
                BlueprintName = "UIKit+TransformTests"
                ReferencedContainer = "container:UIKit+Transform.xcodeproj">
             </BuildableReference>
@@ -56,7 +56,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "C86CB75385952BB1D1E527A4"
-            BuildableName = "UIKit+Transform.app"
+            BuildableName = "UIKitTransform.app"
             BlueprintName = "UIKit+Transform"
             ReferencedContainer = "container:UIKit+Transform.xcodeproj">
          </BuildableReference>
@@ -73,7 +73,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "C86CB75385952BB1D1E527A4"
-            BuildableName = "UIKit+Transform.app"
+            BuildableName = "UIKitTransform.app"
             BlueprintName = "UIKit+Transform"
             ReferencedContainer = "container:UIKit+Transform.xcodeproj">
          </BuildableReference>

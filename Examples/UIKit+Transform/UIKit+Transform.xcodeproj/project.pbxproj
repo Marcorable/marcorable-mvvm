@@ -46,8 +46,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		0757F0A1376E0626F8F28B0D /* UIKit+Transform.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "UIKit+Transform.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		301578DA9A4ED33D44C0C695 /* UIKit+TransformTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "UIKit+TransformTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4F0EC960085B067D02D65555 /* UIKitTransform.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UIKitTransform.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F6E335288FB2330BA8649C0E /* UIKitTransformTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UIKitTransformTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -123,8 +123,8 @@
 			name = "UIKit+TransformTests";
 			packageProductDependencies = (
 			);
-			productName = "UIKit+TransformTests";
-			productReference = 301578DA9A4ED33D44C0C695 /* UIKit+TransformTests.xctest */;
+			productName = UIKitTransformTests;
+			productReference = F6E335288FB2330BA8649C0E /* UIKitTransformTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		C86CB75385952BB1D1E527A4 /* UIKit+Transform */ = {
@@ -149,8 +149,8 @@
 				7E27A67AEAC0AEAFA9E2ABB5 /* MarcorableMVVM */,
 				91BB923A4A916322C0D71E3F /* SharedKit */,
 			);
-			productName = "UIKit+Transform";
-			productReference = 0757F0A1376E0626F8F28B0D /* UIKit+Transform.app */;
+			productName = UIKitTransform;
+			productReference = 4F0EC960085B067D02D65555 /* UIKitTransform.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -309,8 +309,7 @@
 					"-L$(DT_TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME)",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.marcorable.mvvm.uikittransform.tests;
-				PRODUCT_MODULE_NAME = UIKitTransformTests;
-				PRODUCT_NAME = "UIKit+TransformTests";
+				PRODUCT_NAME = UIKitTransformTests;
 				SDKROOT = iphoneos;
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -323,7 +322,7 @@
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5;
 				TARGETED_DEVICE_FAMILY = 1;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/UIKit+Transform.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/UIKit+Transform";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/UIKitTransform.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/UIKitTransform";
 				TEST_TARGET_NAME = "UIKit+Transform";
 			};
 			name = Debug;
@@ -336,6 +335,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "UIKit+Transform";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
@@ -348,8 +348,7 @@
 					"-L$(DT_TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME)",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.marcorable.mvvm.uikittransform;
-				PRODUCT_MODULE_NAME = UIKitTransform;
-				PRODUCT_NAME = "UIKit+Transform";
+				PRODUCT_NAME = UIKitTransform;
 				SDKROOT = iphoneos;
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -373,6 +372,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "UIKit+Transform";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
@@ -385,8 +385,7 @@
 					"-L$(DT_TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME)",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.marcorable.mvvm.uikittransform;
-				PRODUCT_MODULE_NAME = UIKitTransform;
-				PRODUCT_NAME = "UIKit+Transform";
+				PRODUCT_NAME = UIKitTransform;
 				SDKROOT = iphoneos;
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -468,8 +467,7 @@
 					"-L$(DT_TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME)",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.marcorable.mvvm.uikittransform.tests;
-				PRODUCT_MODULE_NAME = UIKitTransformTests;
-				PRODUCT_NAME = "UIKit+TransformTests";
+				PRODUCT_NAME = UIKitTransformTests;
 				SDKROOT = iphoneos;
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -478,7 +476,7 @@
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5;
 				TARGETED_DEVICE_FAMILY = 1;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/UIKit+Transform.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/UIKit+Transform";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/UIKitTransform.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/UIKitTransform";
 				TEST_TARGET_NAME = "UIKit+Transform";
 			};
 			name = Release;

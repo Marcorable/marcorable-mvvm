@@ -46,8 +46,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		C6486B9AA9F06E25A569087E /* SwiftUI+PublishedTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SwiftUI+PublishedTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		DE74E3EE5A2574AC9D18F7A1 /* SwiftUI+Published.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SwiftUI+Published.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		214BA3A190E66F776BDE8663 /* SwiftUIPublishedTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftUIPublishedTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5E49A0C5ED5B275B3202B472 /* SwiftUIPublished.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftUIPublished.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -125,8 +125,8 @@
 				2071ED78213D323AF8DBDEA4 /* MarcorableMVVM */,
 				3F2FBDEDFE6D91A06AE18891 /* SharedKit */,
 			);
-			productName = "SwiftUI+Published";
-			productReference = DE74E3EE5A2574AC9D18F7A1 /* SwiftUI+Published.app */;
+			productName = SwiftUIPublished;
+			productReference = 5E49A0C5ED5B275B3202B472 /* SwiftUIPublished.app */;
 			productType = "com.apple.product-type.application";
 		};
 		AC4D1CE616F5432BF726786D /* SwiftUI+PublishedTests */ = {
@@ -149,8 +149,8 @@
 			name = "SwiftUI+PublishedTests";
 			packageProductDependencies = (
 			);
-			productName = "SwiftUI+PublishedTests";
-			productReference = C6486B9AA9F06E25A569087E /* SwiftUI+PublishedTests.xctest */;
+			productName = SwiftUIPublishedTests;
+			productReference = 214BA3A190E66F776BDE8663 /* SwiftUIPublishedTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -250,8 +250,7 @@
 					"-L$(DT_TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME)",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.marcorable.mvvm.swiftuipublished.tests;
-				PRODUCT_MODULE_NAME = SwiftUIPublishedTests;
-				PRODUCT_NAME = "SwiftUI+PublishedTests";
+				PRODUCT_NAME = SwiftUIPublishedTests;
 				SDKROOT = iphoneos;
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -264,7 +263,7 @@
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5;
 				TARGETED_DEVICE_FAMILY = 1;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SwiftUI+Published.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/SwiftUI+Published";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SwiftUIPublished.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/SwiftUIPublished";
 				TEST_TARGET_NAME = "SwiftUI+Published";
 			};
 			name = Debug;
@@ -336,6 +335,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "SwiftUI+Published";
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -347,8 +347,7 @@
 					"-L$(DT_TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME)",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.marcorable.mvvm.swiftuipublished;
-				PRODUCT_MODULE_NAME = SwiftUIPublished;
-				PRODUCT_NAME = "SwiftUI+Published";
+				PRODUCT_NAME = SwiftUIPublished;
 				SDKROOT = iphoneos;
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -421,6 +420,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "SwiftUI+Published";
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -432,8 +432,7 @@
 					"-L$(DT_TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME)",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.marcorable.mvvm.swiftuipublished;
-				PRODUCT_MODULE_NAME = SwiftUIPublished;
-				PRODUCT_NAME = "SwiftUI+Published";
+				PRODUCT_NAME = SwiftUIPublished;
 				SDKROOT = iphoneos;
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -466,8 +465,7 @@
 					"-L$(DT_TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME)",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.marcorable.mvvm.swiftuipublished.tests;
-				PRODUCT_MODULE_NAME = SwiftUIPublishedTests;
-				PRODUCT_NAME = "SwiftUI+PublishedTests";
+				PRODUCT_NAME = SwiftUIPublishedTests;
 				SDKROOT = iphoneos;
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -476,7 +474,7 @@
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5;
 				TARGETED_DEVICE_FAMILY = 1;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SwiftUI+Published.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/SwiftUI+Published";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SwiftUIPublished.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/SwiftUIPublished";
 				TEST_TARGET_NAME = "SwiftUI+Published";
 			};
 			name = Release;

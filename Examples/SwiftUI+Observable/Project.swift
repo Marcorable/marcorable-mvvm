@@ -12,6 +12,7 @@ let project = Project(
             name: "SwiftUI+Observable",
             destinations: [.iPhone],
             product: .app,
+            productName: "SwiftUIObservable",
             bundleId: "com.marcorable.mvvm.swiftuiobservable",
             deploymentTargets: .iOS("17.0"),
             infoPlist: nil,
@@ -24,14 +25,15 @@ let project = Project(
             settings: .settings(base: [
                 "GENERATE_INFOPLIST_FILE": "YES",
                 "INFOPLIST_KEY_UILaunchScreen_Generation": "YES",
-                // '+'는 Swift 모듈명에 쓸 수 없으므로 모듈명을 따로 지정한다.
-                "PRODUCT_MODULE_NAME": "SwiftUIObservable",
+                // 홈 화면에는 '+' 포함 이름을 그대로 보여준다.
+                "INFOPLIST_KEY_CFBundleDisplayName": "SwiftUI+Observable",
             ])
         ),
         .target(
             name: "SwiftUI+ObservableTests",
             destinations: [.iPhone],
             product: .unitTests,
+            productName: "SwiftUIObservableTests",
             bundleId: "com.marcorable.mvvm.swiftuiobservable.tests",
             deploymentTargets: .iOS("17.0"),
             infoPlist: nil,
@@ -41,7 +43,6 @@ let project = Project(
             ],
             settings: .settings(base: [
                 "GENERATE_INFOPLIST_FILE": "YES",
-                "PRODUCT_MODULE_NAME": "SwiftUIObservableTests",
             ])
         ),
     ]
