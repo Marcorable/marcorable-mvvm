@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		688D5AA6CBD9B9F1B880E762 /* SharedKit in Frameworks */ = {isa = PBXBuildFile; productRef = 929A21ACB264E24152878BA1 /* SharedKit */; };
+		4C196FEC8BD7B583BBC96734 /* MarcorableMVVM in Frameworks */ = {isa = PBXBuildFile; productRef = DBAACF9624229C490EB73F5F /* MarcorableMVVM */; };
+		688D5AA6CBD9B9F1B880E762 /* DesignSystem in Frameworks */ = {isa = PBXBuildFile; productRef = F19E02859FFA09B9F645A18D /* DesignSystem */; };
+		85143329628315B01B676FD0 /* SharedKit in Frameworks */ = {isa = PBXBuildFile; productRef = 929A21ACB264E24152878BA1 /* SharedKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,7 +76,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				688D5AA6CBD9B9F1B880E762 /* SharedKit in Frameworks */,
+				688D5AA6CBD9B9F1B880E762 /* DesignSystem in Frameworks */,
+				4C196FEC8BD7B583BBC96734 /* MarcorableMVVM in Frameworks */,
+				85143329628315B01B676FD0 /* SharedKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -141,6 +145,8 @@
 			);
 			name = "UIKit+Published";
 			packageProductDependencies = (
+				F19E02859FFA09B9F645A18D /* DesignSystem */,
+				DBAACF9624229C490EB73F5F /* MarcorableMVVM */,
 				929A21ACB264E24152878BA1 /* SharedKit */,
 			);
 			productName = "UIKit+Published";
@@ -170,6 +176,8 @@
 			);
 			mainGroup = 84443AA3F6B0BA9A40336C56;
 			packageReferences = (
+				7D37950AC81962623BF07F89 /* XCLocalSwiftPackageReference "../../Packages/DesignSystem" */,
+				0C2FFCDB639BAFE2027221FF /* XCLocalSwiftPackageReference "../../Packages/MarcorableMVVM" */,
 				F8F2A4AD7A6AB143F2678864 /* XCLocalSwiftPackageReference "../../Packages/SharedKit" */,
 			);
 			projectDirPath = "";
@@ -508,6 +516,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCLocalSwiftPackageReference section */
+		0C2FFCDB639BAFE2027221FF /* XCLocalSwiftPackageReference "../../Packages/MarcorableMVVM" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = ../../Packages/MarcorableMVVM;
+		};
+		7D37950AC81962623BF07F89 /* XCLocalSwiftPackageReference "../../Packages/DesignSystem" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = ../../Packages/DesignSystem;
+		};
 		F8F2A4AD7A6AB143F2678864 /* XCLocalSwiftPackageReference "../../Packages/SharedKit" */ = {
 			isa = XCLocalSwiftPackageReference;
 			relativePath = ../../Packages/SharedKit;
@@ -518,6 +534,14 @@
 		929A21ACB264E24152878BA1 /* SharedKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = SharedKit;
+		};
+		DBAACF9624229C490EB73F5F /* MarcorableMVVM */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = MarcorableMVVM;
+		};
+		F19E02859FFA09B9F645A18D /* DesignSystem */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = DesignSystem;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

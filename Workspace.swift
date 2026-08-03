@@ -6,8 +6,10 @@ let workspace = Workspace(
         "Examples/*"
     ],
     additionalFiles: [
-        // SharedKit 패키지를 워크스페이스 최상위에서 직접 열람/편집할 수 있게 참조한다.
+        // 로컬 패키지들을 워크스페이스 최상위에서 직접 열람/편집할 수 있게 참조한다.
         .folderReference(path: "Packages/SharedKit"),
+        .folderReference(path: "Packages/DesignSystem"),
+        .folderReference(path: "Packages/MarcorableMVVM"),
         .glob(pattern: "Docs/COMPARISON.md"),
         .glob(pattern: "README.md"),
     ]

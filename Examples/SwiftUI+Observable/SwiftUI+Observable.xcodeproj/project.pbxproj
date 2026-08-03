@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B11A679F6F35EE9CF1BA6B10 /* SharedKit in Frameworks */ = {isa = PBXBuildFile; productRef = 620D7C38BEFBFC2D9FD78417 /* SharedKit */; };
+		33B3B1BA9B74B2EBDD97EC7D /* SharedKit in Frameworks */ = {isa = PBXBuildFile; productRef = 620D7C38BEFBFC2D9FD78417 /* SharedKit */; };
+		B11A679F6F35EE9CF1BA6B10 /* DesignSystem in Frameworks */ = {isa = PBXBuildFile; productRef = 75C48B2FDD18FF867B00593E /* DesignSystem */; };
+		C603C68BDC55EF3E42FF15AE /* MarcorableMVVM in Frameworks */ = {isa = PBXBuildFile; productRef = 162321A19EFDB9DBE81D609F /* MarcorableMVVM */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,7 +76,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B11A679F6F35EE9CF1BA6B10 /* SharedKit in Frameworks */,
+				B11A679F6F35EE9CF1BA6B10 /* DesignSystem in Frameworks */,
+				C603C68BDC55EF3E42FF15AE /* MarcorableMVVM in Frameworks */,
+				33B3B1BA9B74B2EBDD97EC7D /* SharedKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -117,6 +121,8 @@
 			);
 			name = "SwiftUI+Observable";
 			packageProductDependencies = (
+				75C48B2FDD18FF867B00593E /* DesignSystem */,
+				162321A19EFDB9DBE81D609F /* MarcorableMVVM */,
 				620D7C38BEFBFC2D9FD78417 /* SharedKit */,
 			);
 			productName = "SwiftUI+Observable";
@@ -170,6 +176,8 @@
 			);
 			mainGroup = AE8DC4977A52B3E5C9654B43;
 			packageReferences = (
+				3CF94EA846B795D54A1008C8 /* XCLocalSwiftPackageReference "../../Packages/DesignSystem" */,
+				C6285CB6023F994D403CD1D1 /* XCLocalSwiftPackageReference "../../Packages/MarcorableMVVM" */,
 				20141BE19E2F48D5E9799A11 /* XCLocalSwiftPackageReference "../../Packages/SharedKit" */,
 			);
 			projectDirPath = "";
@@ -510,12 +518,28 @@
 			isa = XCLocalSwiftPackageReference;
 			relativePath = ../../Packages/SharedKit;
 		};
+		3CF94EA846B795D54A1008C8 /* XCLocalSwiftPackageReference "../../Packages/DesignSystem" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = ../../Packages/DesignSystem;
+		};
+		C6285CB6023F994D403CD1D1 /* XCLocalSwiftPackageReference "../../Packages/MarcorableMVVM" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = ../../Packages/MarcorableMVVM;
+		};
 /* End XCLocalSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		162321A19EFDB9DBE81D609F /* MarcorableMVVM */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = MarcorableMVVM;
+		};
 		620D7C38BEFBFC2D9FD78417 /* SharedKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = SharedKit;
+		};
+		75C48B2FDD18FF867B00593E /* DesignSystem */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = DesignSystem;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

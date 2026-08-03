@@ -3,7 +3,9 @@ import ProjectDescription
 let project = Project(
     name: "SwiftUI+Observable",
     packages: [
-        .local(path: "../../Packages/SharedKit")
+        .local(path: "../../Packages/SharedKit"),
+        .local(path: "../../Packages/DesignSystem"),
+        .local(path: "../../Packages/MarcorableMVVM"),
     ],
     targets: [
         .target(
@@ -15,7 +17,9 @@ let project = Project(
             infoPlist: nil,
             buildableFolders: ["Sources"],
             dependencies: [
-                .package(product: "SharedKit")
+                .package(product: "SharedKit"),
+                .package(product: "DesignSystem"),
+                .package(product: "MarcorableMVVM"),
             ],
             settings: .settings(base: [
                 "GENERATE_INFOPLIST_FILE": "YES",
