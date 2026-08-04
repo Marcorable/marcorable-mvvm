@@ -55,7 +55,7 @@ extension DetailView {
                 Section {
                     HStack(spacing: 16) {
                         AsyncImage(
-                            url: detail.avatarURL.flatMap(URL.init(string:)),
+                            url: detail.avatarUrl.flatMap(URL.init(string:)),
                             content: { image in
                                 image.resizable()
                             },

@@ -81,7 +81,7 @@ public final class MockUserRepository: UserRepository, @unchecked Sendable {
             bio: "GitHub의 마스코트",
             followers: 4000,
             publicRepos: 8,
-            avatarURL: nil
+            avatarUrl: nil
         ),
         "octodog": UserDetail(
             login: "octodog",
@@ -89,7 +89,7 @@ public final class MockUserRepository: UserRepository, @unchecked Sendable {
             bio: nil,
             followers: 12,
             publicRepos: 1,
-            avatarURL: nil
+            avatarUrl: nil
         ),
         "marco": UserDetail(
             login: "marco",
@@ -97,7 +97,7 @@ public final class MockUserRepository: UserRepository, @unchecked Sendable {
             bio: "MVVM을 다양하게 고민하는 중",
             followers: 42,
             publicRepos: 10,
-            avatarURL: nil
+            avatarUrl: nil
         ),
     ]
 }

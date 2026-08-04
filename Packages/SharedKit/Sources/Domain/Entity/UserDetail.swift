@@ -7,7 +7,7 @@ public struct UserDetail: Hashable, Sendable {
     public let bio: String?
     public let followers: Int
     public let publicRepos: Int
-    public let avatarURL: String?
+    public let avatarUrl: String?
 }
 
 extension UserDetail: Decodable {
