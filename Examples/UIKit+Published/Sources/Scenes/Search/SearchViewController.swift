@@ -42,7 +42,6 @@ final class SearchViewController: UITableViewController {
     }
 
     private func bind() {
-        // $state는 구독 시점에 현재 값을 즉시 방출하므로 초기 렌더링도 여기서 처리된다.
         viewModel.$state
             .sink { [weak self] state in
                 self?.render(state)
@@ -89,8 +88,6 @@ final class SearchViewController: UITableViewController {
         tableView.backgroundView = spinner
     }
 
-    // MARK: - UITableViewDataSource / Delegate
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         users.count
     }
@@ -106,7 +103,6 @@ final class SearchViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        // 상세 화면은 CommonScene의 공용 SwiftUI 구현을 호스팅 컨트롤러로 감싸 사용한다.
         navigationController?.pushViewController(
             UIHostingController(
                 rootView: SceneFactory.makeScene(by: .detail(users[indexPath.row].login))

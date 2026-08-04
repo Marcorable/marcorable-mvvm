@@ -1,10 +1,9 @@
+
 import Combine
 import Foundation
+
 import SharedKit
 
-/// @Published 상태를 View(ViewController)가 직접 구독하는 기본형 MVVM.
-/// Input/Output transform(UIKit+Transform)과 달리, ViewModel이 상태 프로퍼티 하나를 노출하고
-/// View가 `$state`를 sink로 바인딩한다.
 @MainActor
 final class SearchViewModel {
     enum State: Equatable {
@@ -14,7 +13,6 @@ final class SearchViewModel {
         case failed(String)
     }
 
-    /// View(ViewController)가 구독하는 유일한 출력
     @Published private(set) var state: State = .idle
 
     private let dependency: Dependency
@@ -51,7 +49,6 @@ extension SearchViewModel {
 
         let repository = dependency.repository
 
-        // 이전 Task를 취소하고 잠깐 기다렸다가 실행하는 것으로 디바운스를 구현한다.
         searchTask = Task { [debounce] in
             do {
                 try await Task.sleep(for: debounce)
@@ -60,13 +57,11 @@ extension SearchViewModel {
                 guard !Task.isCancelled else { return }
                 state = .loaded(users)
             } catch is CancellationError {
-                // 새 검색어가 들어와 취소된 경우: 아무것도 하지 않는다.
             } catch {
                 guard !Task.isCancelled else { return }
                 state = .failed(error.localizedDescription)
             }
         }
     }
-
 
 }

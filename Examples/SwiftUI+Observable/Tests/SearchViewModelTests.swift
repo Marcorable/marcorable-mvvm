@@ -1,5 +1,7 @@
-import SharedKit
+
 import XCTest
+
+import SharedKit
 
 @testable import SwiftUIObservable
 

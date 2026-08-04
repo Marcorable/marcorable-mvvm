@@ -1,6 +1,8 @@
-import Combine
-import SharedKit
+
 import XCTest
+import Combine
+
+import SharedKit
 
 @testable import UIKitPublished
 

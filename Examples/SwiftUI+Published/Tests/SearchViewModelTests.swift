@@ -1,5 +1,7 @@
-import SharedKit
+
 import XCTest
+
+import SharedKit
 
 @testable import SwiftUIPublished
 
@@ -10,7 +12,6 @@ final class SearchViewModelTests: XCTestCase {
 
         viewModel.query = "octo"
 
-        // 디바운스(main queue 경유)가 흐르도록 잠깐 양보한 뒤 검색 Task를 기다린다.
         try await waitForSearchTask(of: viewModel)
         XCTAssertEqual(viewModel.state, .loaded([
             User(id: 1, login: "octocat"),
@@ -41,7 +42,6 @@ final class SearchViewModelTests: XCTestCase {
         }
     }
 
-    /// 디바운스가 DispatchQueue.main을 경유하므로, 검색 Task가 만들어질 때까지 잠깐 기다린다.
     private func waitForSearchTask(of viewModel: SearchViewModel) async throws {
         for _ in 0..<50 {
             if let task = viewModel.searchTask {

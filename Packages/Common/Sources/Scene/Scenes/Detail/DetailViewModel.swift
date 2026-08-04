@@ -1,4 +1,6 @@
+
 import Foundation
+
 import SharedKit
 
 @MainActor
@@ -32,7 +34,6 @@ extension DetailViewModel {
 
 extension DetailViewModel {
 
-    /// View의 .task에서 호출된다. View가 사라지면 SwiftUI가 Task를 자동 취소한다.
     func load() async {
         let repository = dependency.repository
         let login = dependency.login

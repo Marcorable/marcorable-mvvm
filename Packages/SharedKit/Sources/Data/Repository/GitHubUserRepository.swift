@@ -1,8 +1,6 @@
+
 import Foundation
 
-/// GitHub REST API 기반 실제 구현.
-/// 인증 없이 동작하지만 비로그인 검색 API는 분당 10회 rate limit이 있다.
-/// 데모/테스트에는 MockUserRepository를 사용해도 된다.
 public struct GitHubUserRepository: UserRepository, RequestFeature {
     let session: URLSession
 
@@ -30,8 +28,6 @@ public struct GitHubUserRepository: UserRepository, RequestFeature {
 }
 
 #if DEBUG
-/// 테스트와 프리뷰에서 사용하는 인메모리 구현.
-/// `error`를 지정하면 모든 호출이 해당 에러를 던지고, `delay`로 로딩 상태를 관찰할 수 있다.
 public final class MockUserRepository: UserRepository, @unchecked Sendable {
     public var users: [User]
     public var details: [String: UserDetail]
@@ -71,8 +67,6 @@ public final class MockUserRepository: UserRepository, @unchecked Sendable {
             throw error
         }
     }
-
-    // MARK: - Sample Data
 
     public static let sampleUsers: [User] = [
         User(id: 1, login: "octocat", avatarURL: nil),

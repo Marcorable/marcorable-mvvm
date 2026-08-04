@@ -92,8 +92,6 @@ final class SearchViewController: UITableViewController {
         tableView.backgroundView = spinner
     }
 
-    // MARK: - UITableViewDataSource / Delegate
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         users.count
     }
@@ -109,7 +107,6 @@ final class SearchViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        // 상세 화면은 CommonScene의 공용 SwiftUI 구현을 호스팅 컨트롤러로 감싸 사용한다.
         navigationController?.pushViewController(
             UIHostingController(
                 rootView: SceneFactory.makeScene(by: .detail(users[indexPath.row].login))

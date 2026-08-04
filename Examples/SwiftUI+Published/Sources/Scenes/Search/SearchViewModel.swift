@@ -1,9 +1,9 @@
+
 import Combine
 import Foundation
+
 import SharedKit
 
-/// iOS 17 이전까지 SwiftUI MVVM의 표준이던 ObservableObject 방식.
-/// @Published 프로퍼티 변경이 objectWillChange를 통해 View를 다시 그린다.
 @MainActor
 final class SearchViewModel: ObservableObject {
     enum State: Equatable {
@@ -13,7 +13,6 @@ final class SearchViewModel: ObservableObject {
         case failed(String)
     }
 
-    /// View가 양방향 바인딩($viewModel.query)하는 입력
     @Published var query = ""
     @Published private(set) var state: State = .idle
 
@@ -26,7 +25,6 @@ final class SearchViewModel: ObservableObject {
         debounceMilliseconds: Int = 300
     ) {
         self.dependency = dependency
-        // $query 스트림을 ViewModel 스스로 구독해 디바운스한다.
         queryObservation = $query
             .map { $0.trimmingCharacters(in: .whitespaces) }
             .removeDuplicates()

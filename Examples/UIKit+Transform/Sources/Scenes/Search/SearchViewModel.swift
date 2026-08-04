@@ -1,9 +1,9 @@
+
 import Combine
 import Foundation
+
 import SharedKit
 
-/// 실무에서 널리 쓰이는 Combine Input/Output(transform) 패턴.
-/// View의 이벤트 스트림을 Input으로 받아, 화면 상태 스트림(Output)으로 변환한다.
 @MainActor
 final class SearchViewModel {
 
@@ -15,7 +15,6 @@ final class SearchViewModel {
     }
 
     struct Input {
-        /// 검색어 변경 스트림 (키 입력마다 방출)
         let query: AnyPublisher<String, Never>
     }
 

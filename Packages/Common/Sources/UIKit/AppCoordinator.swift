@@ -1,11 +1,11 @@
-import NavigationCoordinator
+
 import UIKit
+
+import NavigationCoordinator
 
 @MainActor
 public final class AppCoordinator: ObservableObject {
 
-    // 내비게이션 스택(nav → VC → ViewModel → coordinator)이 코디네이터를 참조하므로,
-    // 역방향 참조는 weak으로 두어 순환을 끊는다.
     public weak var navigationController: UINavigationController?
 
     public init(by navigationController: UINavigationController?) {

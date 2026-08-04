@@ -1,7 +1,6 @@
+
 import Foundation
 
-/// URL 요청 → 상태코드 검증 → 디코딩의 공통 흐름을 제공한다.
-/// associatedtype 대신 제네릭 메서드를 사용해, 한 타입이 여러 Response 타입을 요청할 수 있게 한다.
 protocol RequestFeature {
     var session: URLSession { get }
 }

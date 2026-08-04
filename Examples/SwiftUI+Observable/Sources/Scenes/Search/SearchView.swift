@@ -1,6 +1,8 @@
-import CommonScene
-import SharedKit
+
 import SwiftUI
+
+import SharedKit
+import CommonScene
 
 struct SearchView: View {
     @State private var viewModel: SearchViewModel
@@ -13,8 +15,6 @@ struct SearchView: View {
         Content(state: viewModel.state)
             .navigationTitle("SwiftUI + @Observable")
             .searchable(text: $viewModel.query, prompt: "GitHub 유저 검색")
-            // 검색어가 바뀔 때마다 이전 Task를 자동 취소하고 새로 시작한다.
-            // sleep + 취소가 곧 디바운스가 된다.
             .task(id: viewModel.query) {
                 try? await Task.sleep(for: .milliseconds(300))
                 guard !Task.isCancelled else { return }

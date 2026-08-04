@@ -1,6 +1,8 @@
-import CommonScene
-import SharedKit
+
 import SwiftUI
+
+import SharedKit
+import CommonScene
 
 struct SearchView: View {
     @StateObject private var viewModel: SearchViewModel

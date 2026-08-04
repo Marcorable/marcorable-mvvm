@@ -1,3 +1,4 @@
+
 import Foundation
 
 public enum SharedKitError {
@@ -24,8 +25,6 @@ extension SharedKitError: LocalizedError {
 
 extension SharedKitError: Equatable {
 
-    // system(Error)의 Error가 Equatable이 아니라 자동 합성이 불가능하므로 직접 구현한다.
-    // system끼리는 NSError 브릿징(domain + code) 기준으로 비교한다.
     public static func == (lhs: SharedKitError, rhs: SharedKitError) -> Bool {
         switch (lhs, rhs) {
             case (.system(let lhsError), .system(let rhsError)):

@@ -1,11 +1,12 @@
-import SharedKit
+
 import SwiftUI
+
+import SharedKit
 
 struct DetailView: View {
     @Environment(\.mainStack) private var mainStack
     @StateObject private var viewModel: DetailViewModel
 
-    // 저장 프로퍼티가 private이면 memberwise init도 private이 되므로 명시한다.
     init(viewModel: DetailViewModel) {
         _viewModel = StateObject(wrappedValue: viewModel)
     }

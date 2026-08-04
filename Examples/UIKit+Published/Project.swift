@@ -1,3 +1,4 @@
+
 import ProjectDescription
 
 let project = Project(
@@ -27,7 +28,6 @@ let project = Project(
                 "GENERATE_INFOPLIST_FILE": "YES",
                 "INFOPLIST_KEY_UILaunchScreen_Generation": "YES",
                 "INFOPLIST_KEY_UIApplicationSceneManifest_Generation": "YES",
-                // 홈 화면에는 '+' 포함 이름을 그대로 보여준다.
                 "INFOPLIST_KEY_CFBundleDisplayName": "UIKit+Published",
             ])
         ),
