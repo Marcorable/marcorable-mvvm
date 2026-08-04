@@ -3,6 +3,7 @@ import SharedKit
 
 @MainActor
 final class DetailViewModel: ObservableObject {
+
     enum State: Equatable {
         case loading
         case loaded(UserDetail)

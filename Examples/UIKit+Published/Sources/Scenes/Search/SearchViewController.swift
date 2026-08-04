@@ -1,15 +1,25 @@
+
 import Combine
+import SwiftUI
+
 import SharedKit
-import UIKit
+import CommonScene
+import CommonUIKit
 
 final class SearchViewController: UITableViewController {
+    private let appCoordinator: AppCoordinator
     private let viewModel: SearchViewModel
     private let searchController = UISearchController(searchResultsController: nil)
     private var cancellables = Set<AnyCancellable>()
     private var users: [User] = []
 
-    init(viewModel: SearchViewModel) {
+    init(
+        appCoordinator: AppCoordinator,
+        viewModel: SearchViewModel
+    ) {
+        self.appCoordinator = appCoordinator
         self.viewModel = viewModel
+
         super.init(style: .plain)
     }
 
@@ -96,9 +106,31 @@ final class SearchViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let detailViewModel = viewModel.makeDetailViewModel(for: users[indexPath.row])
+        // 상세 화면은 CommonScene의 공용 SwiftUI 구현을 호스팅 컨트롤러로 감싸 사용한다.
         navigationController?.pushViewController(
-            DetailViewController(viewModel: detailViewModel),
+            UIHostingController(
+                rootView: SceneFactory.makeScene(by: .detail(users[indexPath.row].login))
+                    .environment(\.mainStack) { [weak self] in
+                        switch $0 {
+                            case .push(contentsOf: let screens):
+                                self?.appCoordinator.action(
+                                    by: .push(
+                                        contentsOf: screens.map({
+                                            UIHostingController(
+                                                rootView: SceneFactory.makeScene(by: $0)
+                                            )
+                                        })
+                                    )
+                                )
+
+                            case .pop(let count):
+                                self?.appCoordinator.action(by: .pop(count: count))
+
+                            case .popToRoot:
+                                self?.appCoordinator.action(by: .popToRoot)
+                        }
+                    }
+            ),
             animated: true
         )
     }

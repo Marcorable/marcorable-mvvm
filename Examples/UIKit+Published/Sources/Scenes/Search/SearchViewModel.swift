@@ -68,14 +68,5 @@ extension SearchViewModel {
         }
     }
 
-    /// 다음 화면의 ViewModel 생성을 담당해, View가 Repository를 몰라도 되게 한다.
-    func makeDetailViewModel(for user: User) -> DetailViewModel {
-        DetailViewModel(
-            dependency: .init(
-                login: user.login,
-                repository: dependency.repository
-            )
-        )
-    }
 
 }

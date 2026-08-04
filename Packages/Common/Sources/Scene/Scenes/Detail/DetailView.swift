@@ -2,8 +2,10 @@ import SharedKit
 import SwiftUI
 
 struct DetailView: View {
+    @Environment(\.mainStack) private var mainStack
     @StateObject private var viewModel: DetailViewModel
 
+    // 저장 프로퍼티가 private이면 memberwise init도 private이 되므로 명시한다.
     init(viewModel: DetailViewModel) {
         _viewModel = StateObject(wrappedValue: viewModel)
     }
@@ -24,6 +26,12 @@ struct DetailView: View {
                         },
                         description: {
                             Text(message)
+                        },
+                        actions: {
+                            Button(
+                                action: { mainStack(.pop()) },
+                                label: { Text("돌아가기") }
+                            )
                         }
                     )
             }
@@ -33,6 +41,7 @@ struct DetailView: View {
             await viewModel.load()
         }
     }
+
 }
 
 extension DetailView {
@@ -77,8 +86,17 @@ extension DetailView {
 
 }
 
+#if DEBUG
 #Preview {
     NavigationStack {
-        DetailView(viewModel: DetailViewModel(dependency: .init(login: "octocat", repository: MockUserRepository())))
+        DetailView(
+            viewModel: DetailViewModel(
+                dependency: .init(
+                    login: "octocat",
+                    repository: MockUserRepository()
+                )
+            )
+        )
     }
 }
+#endif

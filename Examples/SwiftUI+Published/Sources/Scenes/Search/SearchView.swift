@@ -1,3 +1,4 @@
+import CommonScene
 import SharedKit
 import SwiftUI
 
@@ -12,9 +13,6 @@ struct SearchView: View {
         Content(state: viewModel.state)
             .navigationTitle("SwiftUI + Published")
             .searchable(text: $viewModel.query, prompt: "GitHub 유저 검색")
-            .navigationDestination(for: User.self) { user in
-                DetailView(viewModel: viewModel.makeDetailViewModel(for: user))
-            }
     }
 }
 
@@ -36,7 +34,7 @@ extension SearchView {
 
                 case .loaded(let users):
                     List(users) { user in
-                        NavigationLink(value: user) {
+                        NavigationLink(value: Screen.detail(user.login)) {
                             UserRow(user: user)
                         }
                     }

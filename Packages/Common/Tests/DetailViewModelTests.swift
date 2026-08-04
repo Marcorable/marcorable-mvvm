@@ -1,11 +1,11 @@
 import SharedKit
 import XCTest
 
-@testable import SwiftUIPublished
+@testable import CommonScene
 
 @MainActor
 final class DetailViewModelTests: XCTestCase {
-    func testLoadSetsLoadedState() async {
+    func testLoadPublishesLoadedDetail() async {
         let viewModel = DetailViewModel(dependency: .init(login: "octocat", repository: MockUserRepository()))
 
         await viewModel.load()
@@ -13,7 +13,7 @@ final class DetailViewModelTests: XCTestCase {
         XCTAssertEqual(viewModel.state, .loaded(MockUserRepository.sampleDetails["octocat"]!))
     }
 
-    func testLoadFailureSetsFailedState() async {
+    func testLoadFailureForUnknownLogin() async {
         let viewModel = DetailViewModel(dependency: .init(login: "nobody", repository: MockUserRepository()))
 
         await viewModel.load()

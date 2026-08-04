@@ -58,13 +58,4 @@ extension SearchViewModel {
         }
     }
 
-    func makeDetailViewModel(for user: User) -> DetailViewModel {
-        DetailViewModel(
-            dependency: .init(
-                login: user.login,
-                repository: dependency.repository
-            )
-        )
-    }
-
 }

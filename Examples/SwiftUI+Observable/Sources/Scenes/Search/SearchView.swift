@@ -1,3 +1,4 @@
+import CommonScene
 import SharedKit
 import SwiftUI
 
@@ -12,9 +13,6 @@ struct SearchView: View {
         Content(state: viewModel.state)
             .navigationTitle("SwiftUI + @Observable")
             .searchable(text: $viewModel.query, prompt: "GitHub 유저 검색")
-            .navigationDestination(for: User.self) { user in
-                DetailView(viewModel: viewModel.makeDetailViewModel(for: user))
-            }
             // 검색어가 바뀔 때마다 이전 Task를 자동 취소하고 새로 시작한다.
             // sleep + 취소가 곧 디바운스가 된다.
             .task(id: viewModel.query) {
@@ -43,7 +41,7 @@ extension SearchView {
 
                 case .loaded(let users):
                     List(users) { user in
-                        NavigationLink(value: user) {
+                        NavigationLink(value: Screen.detail(user.login)) {
                             UserRow(user: user)
                         }
                     }

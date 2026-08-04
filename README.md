@@ -10,8 +10,8 @@ Domain/Data 레이어는 `SharedKit` 패키지로 공유하므로, 프로젝트 
 ```
 MarcorableMVVM.xcworkspace
 ├── Packages/SharedKit        # 공유 Domain(모델·프로토콜) + Data(GitHub API·Mock)
-├── Packages/DesignSystem     # 공용 색·폰트 토큰과 UI 컴포넌트 (구성 중)
-├── Packages/MarcorableMVVM   # MVVM 공통 추상화 — 바인딩·코디네이터 (구성 중)
+├── Packages/MarcorableMVVM   # MVVM 공통 추상화 — NavigationCoordinator 제약
+├── Packages/Common           # 공용 화면(Detail) + 백엔드별 코디네이터 (Common/CommonUIKit/CommonSwiftUI)
 ├── Examples/
 │   ├── UIKit+Published       # @Published 상태를 VC가 직접 구독 (기본형)
 │   ├── UIKit+Transform       # Combine Input/Output transform 패턴

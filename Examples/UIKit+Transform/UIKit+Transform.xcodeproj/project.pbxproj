@@ -7,9 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1CDCCE9F4A92E7D740A023DF /* MarcorableMVVM in Frameworks */ = {isa = PBXBuildFile; productRef = 7E27A67AEAC0AEAFA9E2ABB5 /* MarcorableMVVM */; };
-		297571BF124006110AC497DF /* SharedKit in Frameworks */ = {isa = PBXBuildFile; productRef = 91BB923A4A916322C0D71E3F /* SharedKit */; };
-		814A69100F03C631EC70ABF0 /* DesignSystem in Frameworks */ = {isa = PBXBuildFile; productRef = 51354C217C4252DF889D58A8 /* DesignSystem */; };
+		1CDCCE9F4A92E7D740A023DF /* CommonUIKit in Frameworks */ = {isa = PBXBuildFile; productRef = 37C60E60078FDA0CB240D423 /* CommonUIKit */; };
+		297571BF124006110AC497DF /* NavigationCoordinator in Frameworks */ = {isa = PBXBuildFile; productRef = 41B91A5115C4BED9E1341DCC /* NavigationCoordinator */; };
+		814A69100F03C631EC70ABF0 /* CommonScene in Frameworks */ = {isa = PBXBuildFile; productRef = 345BDC3233B0C9947CE45B3F /* CommonScene */; };
+		ED8947245D6CDA7C9FE9656B /* SharedKit in Frameworks */ = {isa = PBXBuildFile; productRef = 91BB923A4A916322C0D71E3F /* SharedKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,9 +77,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				814A69100F03C631EC70ABF0 /* DesignSystem in Frameworks */,
-				1CDCCE9F4A92E7D740A023DF /* MarcorableMVVM in Frameworks */,
-				297571BF124006110AC497DF /* SharedKit in Frameworks */,
+				814A69100F03C631EC70ABF0 /* CommonScene in Frameworks */,
+				1CDCCE9F4A92E7D740A023DF /* CommonUIKit in Frameworks */,
+				297571BF124006110AC497DF /* NavigationCoordinator in Frameworks */,
+				ED8947245D6CDA7C9FE9656B /* SharedKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -145,8 +147,9 @@
 			);
 			name = "UIKit+Transform";
 			packageProductDependencies = (
-				51354C217C4252DF889D58A8 /* DesignSystem */,
-				7E27A67AEAC0AEAFA9E2ABB5 /* MarcorableMVVM */,
+				345BDC3233B0C9947CE45B3F /* CommonScene */,
+				37C60E60078FDA0CB240D423 /* CommonUIKit */,
+				41B91A5115C4BED9E1341DCC /* NavigationCoordinator */,
 				91BB923A4A916322C0D71E3F /* SharedKit */,
 			);
 			productName = UIKitTransform;
@@ -176,7 +179,7 @@
 			);
 			mainGroup = EE6FD90698ED7FA64F6D6063;
 			packageReferences = (
-				8CEEE20C54E4997C1C72856C /* XCLocalSwiftPackageReference "../../Packages/DesignSystem" */,
+				FBD17D0A8F0828F9E47D5CB5 /* XCLocalSwiftPackageReference "../../Packages/Common" */,
 				14A6009C6FAE78982F49C929 /* XCLocalSwiftPackageReference "../../Packages/MarcorableMVVM" */,
 				6FD6C0DEC6D4819AB6815824 /* XCLocalSwiftPackageReference "../../Packages/SharedKit" */,
 			);
@@ -522,20 +525,24 @@
 			isa = XCLocalSwiftPackageReference;
 			relativePath = ../../Packages/SharedKit;
 		};
-		8CEEE20C54E4997C1C72856C /* XCLocalSwiftPackageReference "../../Packages/DesignSystem" */ = {
+		FBD17D0A8F0828F9E47D5CB5 /* XCLocalSwiftPackageReference "../../Packages/Common" */ = {
 			isa = XCLocalSwiftPackageReference;
-			relativePath = ../../Packages/DesignSystem;
+			relativePath = ../../Packages/Common;
 		};
 /* End XCLocalSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		51354C217C4252DF889D58A8 /* DesignSystem */ = {
+		345BDC3233B0C9947CE45B3F /* CommonScene */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = DesignSystem;
+			productName = CommonScene;
 		};
-		7E27A67AEAC0AEAFA9E2ABB5 /* MarcorableMVVM */ = {
+		37C60E60078FDA0CB240D423 /* CommonUIKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = MarcorableMVVM;
+			productName = CommonUIKit;
+		};
+		41B91A5115C4BED9E1341DCC /* NavigationCoordinator */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = NavigationCoordinator;
 		};
 		91BB923A4A916322C0D71E3F /* SharedKit */ = {
 			isa = XCSwiftPackageProductDependency;

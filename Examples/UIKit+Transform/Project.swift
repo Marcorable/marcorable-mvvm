@@ -4,8 +4,8 @@ let project = Project(
     name: "UIKit+Transform",
     packages: [
         .local(path: "../../Packages/SharedKit"),
-        .local(path: "../../Packages/DesignSystem"),
         .local(path: "../../Packages/MarcorableMVVM"),
+        .local(path: "../../Packages/Common"),
     ],
     targets: [
         .target(
@@ -19,8 +19,9 @@ let project = Project(
             buildableFolders: ["Sources"],
             dependencies: [
                 .package(product: "SharedKit"),
-                .package(product: "DesignSystem"),
-                .package(product: "MarcorableMVVM"),
+                .package(product: "NavigationCoordinator"),
+                .package(product: "CommonScene"),
+                .package(product: "CommonUIKit"),
             ],
             settings: .settings(base: [
                 "GENERATE_INFOPLIST_FILE": "YES",

@@ -28,7 +28,7 @@
       location = "group:Packages"
       name = "Packages">
       <FileRef
-         location = "group:DesignSystem">
+         location = "group:Common">
       </FileRef>
       <FileRef
          location = "group:MarcorableMVVM">

@@ -39,7 +39,9 @@
 ## 검증
 
 - 변경 후에는 4개 스킴(UIKit+Published, UIKit+Transform, SwiftUI+Published, SwiftUI+Observable) 전부 테스트
-  (스킴명에 '+'가 있으니 따옴표로 감싼다. 모듈명은 '+' 제거형: UIKitPublished 등): `xcodebuild -workspace MarcorableMVVM.xcworkspace -scheme <스킴> -destination 'platform=iOS Simulator,name=iPhone 17 Pro' test`
+  (스킴명에 '+'가 있으니 따옴표로 감싼다. 모듈명은 '+' 제거형: UIKitPublished 등): `xcodebuild -workspace MarcorableMVVM.xcworkspace -scheme <스킴> -destination 'platform=iOS Simulator,name=iPhone 17' test`
 - SharedKit 단독 검증은 `Packages/SharedKit`에서 `swift test`.
+- Common 패키지는 iOS 전용(UIKit 포함)이라 `swift test`가 안 된다 — `Packages/Common`에서
+  `xcodebuild -scheme Common-Package -destination 'platform=iOS Simulator,name=iPhone 17' test`.
 - 시뮬레이터가 앱 실행을 거부하는 간헐적 플레이크("failed preflight checks" / Busy)가 있다 —
   코드 문제가 아니므로 해당 스킴만 재시도한다.
