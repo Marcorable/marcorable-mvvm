@@ -10,10 +10,12 @@ struct SwiftUIPublishedApp: App {
     var body: some Scene {
         WindowGroup {
             MainNavigationStack(
-                rootView: SearchView(
-                    viewModel: SearchViewModel(
-                        dependency: .init(
-                            repository: RepositoryFactory.makeUserRepository()
+                rootView: SearchScreen.Context(
+                    viewModel: .init(
+                        model: .init(
+                            dependency: .init(
+                                repository: RepositoryFactory.makeUserRepository()
+                            )
                         )
                     )
                 )

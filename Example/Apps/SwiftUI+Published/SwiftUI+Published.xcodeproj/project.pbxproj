@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 55;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -46,29 +46,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		214BA3A190E66F776BDE8663 /* SwiftUIPublishedTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftUIPublishedTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		5E49A0C5ED5B275B3202B472 /* SwiftUIPublished.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftUIPublished.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A977B3CE30231F3B009538E9 /* SwiftUIPublished.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftUIPublished.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A977B3D030231F3B009538E9 /* SwiftUIPublishedTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftUIPublishedTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		93522B0C08AB2A6F437E760A /* Sources */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			explicitFileTypes = {
-			};
-			explicitFolders = (
-			);
-			path = Sources;
-			sourceTree = "<group>";
-		};
-		AAE2F09316E841726129C8D8 /* Tests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			explicitFileTypes = {
-			};
-			explicitFolders = (
-			);
-			path = Tests;
-			sourceTree = "<group>";
-		};
+		93522B0C08AB2A6F437E760A /* Sources */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Sources; sourceTree = "<group>"; };
+		AAE2F09316E841726129C8D8 /* Tests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Tests; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,11 +76,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A977B3CF30231F3B009538E9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A977B3CE30231F3B009538E9 /* SwiftUIPublished.app */,
+				A977B3D030231F3B009538E9 /* SwiftUIPublishedTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		D5BF6894F34107569749207C = {
 			isa = PBXGroup;
 			children = (
 				93522B0C08AB2A6F437E760A /* Sources */,
 				AAE2F09316E841726129C8D8 /* Tests */,
+				A977B3CF30231F3B009538E9 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
@@ -126,7 +120,7 @@
 				3F2FBDEDFE6D91A06AE18891 /* SharedKit */,
 			);
 			productName = SwiftUIPublished;
-			productReference = 5E49A0C5ED5B275B3202B472 /* SwiftUIPublished.app */;
+			productReference = A977B3CE30231F3B009538E9 /* SwiftUIPublished.app */;
 			productType = "com.apple.product-type.application";
 		};
 		AC4D1CE616F5432BF726786D /* SwiftUI+PublishedTests */ = {
@@ -150,7 +144,7 @@
 			packageProductDependencies = (
 			);
 			productName = SwiftUIPublishedTests;
-			productReference = 214BA3A190E66F776BDE8663 /* SwiftUIPublishedTests.xctest */;
+			productReference = A977B3D030231F3B009538E9 /* SwiftUIPublishedTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -180,6 +174,7 @@
 				13C2444C29608E58A997435B /* XCLocalSwiftPackageReference "../../Packages/Common" */,
 				3070E2CFA3EB9BE895F5E02F /* XCLocalSwiftPackageReference "../../Packages/SharedKit" */,
 			);
+			productRefGroup = A977B3CF30231F3B009538E9 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -255,10 +250,7 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
-					"$(inherited)",
-					DEBUG,
-				);
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
 				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5;
@@ -437,10 +429,7 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
-					"$(inherited)",
-					DEBUG,
-				);
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
 				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5;
