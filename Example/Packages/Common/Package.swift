@@ -32,6 +32,6 @@ let package = Package(
             name: "CommonTests",
             dependencies: ["CommonScene"],
             path: "Tests"
-        ),
+        )
     ]
 )

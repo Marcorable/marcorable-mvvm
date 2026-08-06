@@ -67,13 +67,14 @@ MarcorableMVVM/
 
 ## 예제 열기
 
-`Example/Example.xcworkspace`를 Xcode로 열면 된다. 각 예제는 독립된 앱 스킴으로 실행/테스트한다.
-
-프로젝트 파일은 [Tuist](https://tuist.io)로 생성한다. 구조를 바꿨다면 `Example/`에서:
+프로젝트 파일(`*.xcodeproj`)은 [Tuist](https://tuist.io)로 생성하며 저장소에 포함되지 않는다.
+clone 후 최초 1회, 그리고 프로젝트 구조를 바꿨을 때 `Example/`에서:
 
 ```bash
 Scripts/generate.sh
 ```
+
+생성된 `Example/Example.xcworkspace`를 Xcode로 열면 된다. 각 예제는 독립된 앱 스킴으로 실행/테스트한다.
 
 (`tuist generate` 후 Tuist가 만드는 표시용 가상 그룹('Project' 래퍼, 'Packages', 'Products')을
 정리하는 후처리까지 수행해, 네비게이터에 Sources/Tests 폴더만 남긴다.

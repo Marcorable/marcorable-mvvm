@@ -3,6 +3,7 @@ import ProjectDescription
 
 let project = Project(
     name: "SwiftUI+Observable",
+    options: .options(defaultKnownRegions: ["en"]),
     packages: [
         .local(path: "../../Packages/SharedKit"),
         .local(path: "../../../"),
@@ -45,5 +46,8 @@ let project = Project(
                 "GENERATE_INFOPLIST_FILE": "YES",
             ])
         ),
+    ],
+    additionalFiles: [
+        "README.md",
     ]
 )

@@ -14,16 +14,21 @@ extension RequestFeature {
         var request = URLRequest(url: url)
         request.setValue("application/vnd.github+json", forHTTPHeaderField: "Accept")
 
-        let (data, response) = try await session.data(for: request)
-        guard let http = response as? HTTPURLResponse else {
-            throw SharedKitError.invalidResponse
+        do {
+            let (data, response) = try await session.data(for: request)
+
+            guard let http = response as? HTTPURLResponse else {
+                throw SharedKitError.invalidResponse
+            }
+            guard (200..<300).contains(http.statusCode) else {
+                throw SharedKitError.httpStatus(http.statusCode)
+            }
+            let decoder = JSONDecoder()
+            decoder.keyDecodingStrategy = .convertFromSnakeCase
+            return try decoder.decode(Response.self, from: data)
+        } catch let error as URLError where error.code == .cancelled {
+            throw CancellationError()
         }
-        guard (200..<300).contains(http.statusCode) else {
-            throw SharedKitError.httpStatus(http.statusCode)
-        }
-        let decoder = JSONDecoder()
-        decoder.keyDecodingStrategy = .convertFromSnakeCase
-        return try decoder.decode(Response.self, from: data)
     }
 
 }
