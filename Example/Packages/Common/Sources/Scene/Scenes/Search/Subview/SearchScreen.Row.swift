@@ -3,10 +3,14 @@ import SwiftUI
 
 extension SearchScreen {
 
-    struct Row: View {
+    public struct Row: View {
         let model: Model
 
-        var body: some View {
+        public init(model: Model) {
+            self.model = model
+        }
+
+        public var body: some View {
             HStack(spacing: 12) {
                 AsyncImage(
                     url: model.imageUrl,
@@ -28,9 +32,15 @@ extension SearchScreen {
 
 extension SearchScreen.Row {
 
-    struct Model: Hashable {
-        let name: String
-        let imageUrl: URL?
+    public struct Model: Hashable {
+        public let name: String
+        public let imageUrl: URL?
+
+        public init(name: String, imageUrl: URL?) {
+            self.name = name
+            self.imageUrl = imageUrl
+        }
+
     }
 
 }

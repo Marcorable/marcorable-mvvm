@@ -1,5 +1,6 @@
 
 import SharedKit
+import CommonScene
 
 extension SearchScreen {
 
@@ -22,9 +23,9 @@ extension SearchScreen.Model {
 }
 
 extension SearchScreen.Model {
-    typealias State = SearchScreen.State
+    typealias Status = SearchScreen.Status
 
-    func search(by trimmed: String) async -> Result<[User], State> {
+    func search(by trimmed: String) async -> Result<[User], Status> {
         guard !trimmed.isEmpty else {
             return .failure(.idle)
         }

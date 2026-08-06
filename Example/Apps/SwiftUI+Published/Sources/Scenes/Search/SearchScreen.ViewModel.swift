@@ -3,6 +3,7 @@ import Combine
 import Foundation
 
 import SharedKit
+import CommonScene
 
 extension SearchScreen {
 
@@ -25,7 +26,7 @@ extension SearchScreen {
 }
 
 extension SearchScreen.ViewModel {
-    typealias State = SearchScreen.State
+    typealias Status = SearchScreen.Status
     typealias Row = SearchScreen.Row
 
     private func bind() {
@@ -34,7 +35,7 @@ extension SearchScreen.ViewModel {
         let searched = $input
             .map({ $0.trimmingCharacters(in: .whitespaces) })
             .removeDuplicates()
-            .debounce(for: .milliseconds(400), scheduler: DispatchQueue.main)
+            .debounce(for: .milliseconds(SearchScreen.debounce), scheduler: DispatchQueue.main)
             .handleEvents(
                 receiveOutput: { [weak self] _ in
                     self?.isLoading = true
@@ -42,7 +43,7 @@ extension SearchScreen.ViewModel {
             )
             .combineLatest(modelPublisher)
             .map({ query, model in
-                Future<Result<[User], State>, Never> { promise in
+                Future<Result<[User], Status>, Never> { promise in
                     Task {
                         let result = await model.search(by: query)
                         promise(.success(result))
@@ -73,7 +74,7 @@ extension SearchScreen.ViewModel {
         )
     }
 
-    private func bind(state publisher: AnyPublisher<State, Never>) {
+    private func bind(state publisher: AnyPublisher<Status, Never>) {
         bind(
             alert: publisher
                 .compactMap({
@@ -84,7 +85,7 @@ extension SearchScreen.ViewModel {
         )
     }
 
-    private func bind(alert publisher: AnyPublisher<State.Alert, Never>) {
+    private func bind(alert publisher: AnyPublisher<Status.Alert, Never>) {
         publisher
             .compactMap({
                 guard case .localized(let message) = $0 else { return nil }
