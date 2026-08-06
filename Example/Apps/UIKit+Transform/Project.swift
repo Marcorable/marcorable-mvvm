@@ -3,6 +3,7 @@ import ProjectDescription
 
 let project = Project(
     name: "UIKit+Transform",
+    options: .options(defaultKnownRegions: ["en"]),
     packages: [
         .local(path: "../../Packages/SharedKit"),
         .local(path: "../../../"),
