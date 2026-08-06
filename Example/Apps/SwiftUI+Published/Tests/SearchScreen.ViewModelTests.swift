@@ -3,6 +3,7 @@ import XCTest
 import Combine
 
 import SharedKit
+import CommonScene
 
 @testable import SwiftUIPublished
 

@@ -2,6 +2,7 @@
 import XCTest
 
 import SharedKit
+import CommonScene
 
 @testable import SwiftUIPublished
 
