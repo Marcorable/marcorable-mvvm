@@ -51,6 +51,7 @@ extension SearchScreen.ViewModel {
 
 extension SearchScreen.ViewModel {
     typealias Status = SearchScreen.Status
+    typealias Row = AsyncImageLabelRow
 
     private func update(by status: Status) {
         self.isLoading = false
@@ -70,7 +71,7 @@ extension SearchScreen.ViewModel {
 
 }
 
-fileprivate extension SearchScreen.Row.Model {
+fileprivate extension AsyncImageLabelRow.Model {
 
     init(_ user: User) {
         self.init(

@@ -27,7 +27,7 @@ extension SearchScreen {
 
 extension SearchScreen.ViewModel {
     typealias Status = SearchScreen.Status
-    typealias Row = SearchScreen.Row
+    typealias Row = AsyncImageLabelRow
 
     private func bind() {
         let modelPublisher = Just(model).eraseToAnyPublisher()
@@ -110,7 +110,7 @@ extension SearchScreen.ViewModel {
 
 fileprivate extension Array where Element == User {
 
-    var transform: [SearchScreen.Row.Model] {
+    var transform: [AsyncImageLabelRow.Model] {
         self.map({
             .init(
                 name: $0.login,

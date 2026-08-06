@@ -1,6 +1,5 @@
 
 import SharedKit
-import CommonScene
 
 extension SearchScreen {
 

@@ -26,7 +26,7 @@ extension SearchScreen {
                     } else {
                         List(rows, id: \.name) { row in
                             NavigationLink(value: Screen.detail(row.name)) {
-                                Row(model: row)
+                                AsyncImageLabelRow(model: row)
                             }
                         }
                     }
