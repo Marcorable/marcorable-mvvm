@@ -48,5 +48,8 @@ let project = Project(
                 "GENERATE_INFOPLIST_FILE": "YES",
             ])
         ),
+    ],
+    additionalFiles: [
+        "README.md",
     ]
 )
