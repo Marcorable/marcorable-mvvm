@@ -17,8 +17,9 @@ open class PublishedViewLifeCycleViewController: UIViewController {
         viewLifeCycleSubject.eraseToAnyPublisher()
     }
 
+    public var cancellableSet: Set<AnyCancellable> = []
+
     private let viewLifeCycleSubject: PassthroughSubject<ViewLifeCycle, Never> = .init()
-    private var cancellableSet: Set<AnyCancellable> = []
 
     open override func loadView() {
         super.loadView()
