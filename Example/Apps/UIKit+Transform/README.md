@@ -4,9 +4,14 @@
 
 ## 바인딩 방식
 
-- `SearchViewModel.transform(Input) -> Output`이 유일한 진입점. 디바운스·중복 제거·요청 갈아타기(switchToLatest)가 전부 선언형 파이프라인 안에 있다.
-- ViewController는 `PassthroughSubject`로 검색어를 흘려보내고, `output.state`를 구독해 `render(_:)`만 호출한다.
-- 상세 화면은 입력이 단순해 `@Published` 상태 노출 방식을 혼용했다 — 화면 복잡도에 따라 패턴을 섞을 수 있음을 보여준다.
+- `ViewModel.transform(Input) -> Output`이 유일한 진입점. Input은 생명주기(`viewLife`)와
+  사용자 이벤트(`action`) 스트림, Output은 `isLoading` / `rows` / `status` 퍼블리셔다.
+- 디바운스·중복 제거·요청 갈아타기(`switchToLatest`)가 전부 선언형 파이프라인 안에 있다.
+- rows는 `CurrentValueSubject`에 `multicast`로 흘려, 행 선택 시 이벤트 시점의 최신 rows를
+  `.value` 스냅샷으로 읽는다 (`withLatestFrom` 등가 — `combineLatest`로 조합하면
+  rows 갱신 때마다 route가 재방출되는 유령 push가 생긴다).
+- `.setup`(초기 구성) / `.alert`(실패) / `.route`(내비게이션)는 `status` 스트림 하나로
+  단방향 방출되고, VC는 switch로 렌더만 한다.
 
 ## 장점
 
@@ -16,6 +21,8 @@
 
 ## 한계
 
-- Combine 학습 곡선이 있고, async/await와 브릿징(`Publishers.fromAsync`)이 필요하다.
-- Future 기반 브릿징은 구독 취소가 내부 Task까지 전파되지 않는다(예제에서는 switchToLatest로 결과만 폐기).
-- 스트림이 복잡해지면 디버깅 난도가 올라간다.
+- Combine 학습 곡선이 있고, async/await 브릿징을 인라인 `Future` + `Task`로 직접 해야 한다.
+- `Future` 기반 브릿징은 구독 취소가 내부 Task(네트워크)까지 전파되지 않는다 —
+  `switchToLatest`는 결과만 폐기한다. (Task 취소 디바운스를 쓰는 다른 세 변형과의 차이)
+- 스트림이 복잡해지면 디버깅 난도가 올라간다. `share()` / `multicast` 위치를 놓치면
+  구독마다 파이프라인이 복제되어 요청이 중복 실행된다.

@@ -1,6 +1,7 @@
 # SwiftUI+Published — ObservableObject MVVM
 
 iOS 17 이전까지 SwiftUI MVVM의 표준이던 방식. `ObservableObject` + `@Published` + `@StateObject` 조합.
+시간축 로직(디바운스)은 Combine 파이프라인 대신 **async/await(Task 취소)** 로 구현했다.
 
 ## 구조
 
@@ -9,29 +10,33 @@ iOS 17 이전까지 SwiftUI MVVM의 표준이던 방식. `ObservableObject` + `@
 | 파일 | 역할 |
 |---|---|
 | `SearchScreen.swift` | 씬 네임스페이스 + `Status` enum (`.idle` / `.alert`) + 디바운스 상수 |
-| `SearchScreen.Context.swift` | View. 상태를 그리기만 한다 |
-| `SearchScreen.Model.swift` | 비즈니스 로직. `search(by:) async -> Result<[User], Status>` — Combine 의존 없음 |
-| `SearchScreen.ViewModel.swift` | 표시 로직. Combine 파이프라인으로 Model과 View를 잇는다 |
+| `SearchScreen.Context.swift` | View. 상태를 그리기만 하고, 변경은 전부 `action(by:)`로 보낸다 |
+| `SearchScreen.Model.swift` | 비즈니스 로직. `search(by:) async -> Result<[User], Status>` — 취소는 `.idle`로 변환 |
+| `SearchScreen.ViewModel.swift` | 표시 로직. `Action`을 받아 디바운스 Task로 검색하고 `@Published` 상태를 갱신 |
 
 ## 바인딩 방식
 
-- `@Published var input`을 View가 `.searchable(text: $viewModel.input)`로 양방향 바인딩한다.
-- ViewModel이 자신의 `$input` 퍼블리셔를 구독해 트림 → `removeDuplicates` → 디바운스 후
-  검색을 실행한다 — 시간축 로직이 전부 ViewModel 안에 있다.
-- 검색 결과는 **`Result<[User], Status>` 값 스트림**으로 흘린다. 에러도 Output 값이라
-  실패해도 스트림이 죽지 않고, `switchToLatest`가 항상 최신 요청만 유지하며,
-  `successes()` / `failures()`로 갈래를 나눠 `rows`와 얼럿에 각각 바인딩한다.
+- 모든 `@Published` 프로퍼티는 `private(set)` — View는 읽기만 하고, 변경은
+  `action(by:)`(`.input` / `.dismiss`) 하나로만 들어온다. 단방향 흐름.
+- `.searchable`은 `Binding(get: input, set: action(.input))`으로 잇는다.
+- 디바운스 = **Task 취소**: 새 입력마다 이전 `debounceTask`를 취소하고
+  `sleep(600ms) + 취소 확인` 후 검색한다. 트림 결과가 직전과 같으면 스킵
+  (`removeDuplicates` 등가), 빈 입력은 즉시 rows를 `nil`로 리셋하고 진행 중 요청을 취소한다.
+- 취소는 구조적 동시성을 타고 URLSession까지 전파되고, Model이 `CancellationError`를
+  `.failure(.idle)`로 변환해 얼럿으로 새지 않는다.
+- 검색 실패 시 **이전 결과를 유지하고 alert만 노출**한다 (`FailurePolicyTests`가 단언).
 
 ## 장점
 
-- 바인딩 코드가 거의 없다. `@Published` 변경이 곧 화면 갱신.
+- Combine 없이 `ObservableObject`만으로 구성 — 파이프라인 학습 비용이 없다.
+- 상태 변경 진입점이 `action(by:)` 하나라 흐름 추적이 쉽다.
+- Task 취소가 네트워크 요청까지 실제로 중단시킨다 — `switchToLatest`가 구독만 끊던
+  Combine 파이프라인 버전보다 우위인 지점.
 - Model이 순수 async 함수라 테스트가 `await` 한 줄로 끝난다.
-- 성공/실패가 서로 다른 갈래로 흐르므로 각 처리 위치가 명확하다.
-- SwiftUI 수명주기(`.task`)와 결합하면 취소 처리가 공짜로 따라온다.
 
 ## 한계
 
 - `objectWillChange` 단위 갱신이라, 프로퍼티 하나만 바뀌어도 이 객체를 관찰하는 모든 View가 다시 계산된다(@Observable과의 핵심 차이).
-- `switchToLatest`는 Combine 구독만 취소하고 내부 `Task`(네트워크)까지 중단하지는 않는다.
 - `@StateObject`/`@ObservedObject`/`@EnvironmentObject` 선택을 잘못하면 상태가 리셋되는 함정이 있다.
-- Combine(파이프라인)과 async/await(Model)가 공존해 흐름이 두 갈래가 된다.
+- 디바운스가 ViewModel 소유라, VM 테스트가 디바운스 경과를 기다리는 `settle()`
+  벽시계 대기를 필요로 한다 (View가 디바운스를 쥐는 Observable 변형과의 차이).

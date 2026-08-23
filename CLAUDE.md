@@ -22,8 +22,10 @@
 - 공용 화면(Detail)과 백엔드별 코디네이터는 `Example/Packages/Common`에 둔다
   (제품: CommonScene / CommonUIKit). 예제 앱에는 Search 씬과 조립부만 남긴다 —
   프로젝트 간 차이가 순수하게 바인딩 방식의 차이만 되도록.
-- 화면 상태는 `enum State { idle, loading, loaded, failed }` 하나로 모델링한다.
-  (`isLoading` 플래그 + 데이터 배열 분리 금지)
+- 화면 상태는 `rows`(Optional) / `isLoading` / 얼럿 문자열로 분리하고, 실패·취소는
+  `Status` enum(`.idle` / `.alert`)으로 값 변환해 흘린다. 공통 정책: 실패 시 이전 rows 유지,
+  취소는 얼럿 없이 무시(`CancellationError` → `.idle`), 빈 쿼리는 rows `nil` 리셋 —
+  각 변형의 `FailurePolicyTests`가 같은 이름의 시나리오로 이 정책을 단언한다.
 - 새 예제(변형)를 추가할 때: `Example/Apps/<이름>/` + `Project.swift` + 예제 README(장단점 정리) +
   ViewModel 유닛 테스트(MockUserRepository 사용)를 갖추고, `Example/Docs/COMPARISON.md` 표에 추가한다.
 
