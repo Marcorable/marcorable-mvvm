@@ -22,16 +22,16 @@ final class SearchScreenFailurePolicyTests: XCTestCase {
     }
 
     private func makeInput(
-        userInput userInputSubject: SearchScreen.UserInputSubject = .init()
+        action actionSubject: SearchScreen.ActionSubject = .init()
     ) -> (
         input: SearchScreen.ViewModel.Input,
-        userInput: SearchScreen.UserInputSubject
+        action: SearchScreen.ActionSubject
     ) {
         let input = SearchScreen.ViewModel.Input(
             viewLifePublisher: Empty().eraseToAnyPublisher(),
-            userInputPublisher: userInputSubject.eraseToAnyPublisher()
+            actionPublisher: actionSubject.eraseToAnyPublisher()
         )
-        return (input, userInput: userInputSubject)
+        return (input, action: actionSubject)
     }
 
     private func settle(_ seconds: TimeInterval = 1) {
@@ -48,7 +48,7 @@ extension SearchScreenFailurePolicyTests {
     func testFailureEmitsAlertStatus() {
         let repository = MockUserRepository(error: SharedKitError.httpStatus(500))
         let viewModel = makeViewModel(repository)
-        let (input, userInput) = makeInput()
+        let (input, action) = makeInput()
         let output = viewModel.transform(input)
 
         output.rowsPublisher
@@ -62,14 +62,14 @@ extension SearchScreenFailurePolicyTests {
             }
             .store(in: &cancellableSet)
 
-        userInput.send(.search("octo"))
+        action.send(.search("octo"))
         wait(for: [alerted], timeout: 2)
     }
 
     func testFailureKeepsPreviousRows() {
         let repository = MockUserRepository()
         let viewModel = makeViewModel(repository)
-        let (input, userInput) = makeInput()
+        let (input, action) = makeInput()
         let output = viewModel.transform(input)
 
         var latestRows: [SearchScreen.Row.Model]?
@@ -81,7 +81,7 @@ extension SearchScreenFailurePolicyTests {
             .sink { _ in }
             .store(in: &cancellableSet)
 
-        userInput.send(.search("octo"))
+        action.send(.search("octo"))
         settle()
         XCTAssertEqual(latestRows?.map(\.name), ["octocat", "octodog"])
 
@@ -94,7 +94,7 @@ extension SearchScreenFailurePolicyTests {
             }
             .store(in: &cancellableSet)
 
-        userInput.send(.search("swift"))
+        action.send(.search("swift"))
         wait(for: [alerted], timeout: 2)
         settle()
 
@@ -104,7 +104,7 @@ extension SearchScreenFailurePolicyTests {
     func testRecoversAfterFailure() {
         let repository = MockUserRepository()
         let viewModel = makeViewModel(repository)
-        let (input, userInput) = makeInput()
+        let (input, action) = makeInput()
         let output = viewModel.transform(input)
 
         var latestRows: [SearchScreen.Row.Model]?
@@ -117,11 +117,11 @@ extension SearchScreenFailurePolicyTests {
             .store(in: &cancellableSet)
 
         repository.error = SharedKitError.invalidResponse
-        userInput.send(.search("octo"))
+        action.send(.search("octo"))
         settle()
 
         repository.error = nil
-        userInput.send(.search("octod"))
+        action.send(.search("octod"))
         settle()
 
         XCTAssertEqual(latestRows?.map(\.name), ["octodog"])
@@ -130,7 +130,7 @@ extension SearchScreenFailurePolicyTests {
     func testEmptyQueryAfterSearchResetsRowsToNil() {
         let repository = MockUserRepository()
         let viewModel = makeViewModel(repository)
-        let (input, userInput) = makeInput()
+        let (input, action) = makeInput()
         let output = viewModel.transform(input)
 
         var latestRows: [SearchScreen.Row.Model]?
@@ -138,11 +138,11 @@ extension SearchScreenFailurePolicyTests {
             .sink { latestRows = $0 }
             .store(in: &cancellableSet)
 
-        userInput.send(.search("octo"))
+        action.send(.search("octo"))
         settle()
         XCTAssertEqual(latestRows?.map(\.name), ["octocat", "octodog"])
 
-        userInput.send(.search(""))
+        action.send(.search(""))
         settle()
 
         XCTAssertNil(latestRows)

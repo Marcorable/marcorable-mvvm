@@ -12,7 +12,7 @@ extension SearchScreen {
 
         struct Input {
             let viewLifePublisher: AnyPublisher<ViewLife, Never>
-            let userInputPublisher: AnyPublisher<UserInput, Never>
+            let actionPublisher: AnyPublisher<Action, Never>
         }
 
         struct Output {
@@ -39,7 +39,7 @@ extension SearchScreen.ViewModel {
         let isLoadingSubject: PassthroughSubject<Bool, Never> = .init()
         let rowsSubject: CurrentValueSubject<[Row.Model]?, Never> = .init(nil)
 
-        let queryPublisher = query(from: input.userInputPublisher)
+        let queryPublisher = query(from: input.actionPublisher)
 
         let searched = search(
             from: queryPublisher,
@@ -65,7 +65,7 @@ extension SearchScreen.ViewModel {
                         })
                         .eraseToAnyPublisher(),
                     select(
-                        from: input.userInputPublisher,
+                        from: input.actionPublisher,
                         rowsSubject: rowsSubject
                     ),
                     searched.failures()
@@ -97,11 +97,11 @@ extension SearchScreen.ViewModel {
     }
 
     private func query(
-        from userInputPublisher: SearchScreen.UserInputPublisher
+        from actionPublisher: SearchScreen.ActionPublisher
     ) -> AnyPublisher<String, Never> {
-        userInputPublisher
-            .compactMap({ userInput -> String? in
-                guard case .search(let query) = userInput else { return nil }
+        actionPublisher
+            .compactMap({ action -> String? in
+                guard case .search(let query) = action else { return nil }
                 return query.trimmingCharacters(in: .whitespaces)
             })
             .removeDuplicates()
@@ -133,12 +133,12 @@ extension SearchScreen.ViewModel {
     }
 
     private func select(
-        from userInputPublisher: SearchScreen.UserInputPublisher,
+        from actionPublisher: SearchScreen.ActionPublisher,
         rowsSubject: CurrentValueSubject<[Row.Model]?, Never>
     ) -> AnyPublisher<Status, Never> {
-        userInputPublisher
-            .compactMap({ userInput -> Int? in
-                guard case .select(let index) = userInput else { return nil }
+        actionPublisher
+            .compactMap({ action -> Int? in
+                guard case .select(let index) = action else { return nil }
                 return index
             })
             .compactMap({

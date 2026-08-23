@@ -3,8 +3,8 @@ import Combine
 
 enum SearchScreen {
     typealias ViewLifeSubject = PassthroughSubject<ViewLife, Never>
-    typealias UserInputSubject = PassthroughSubject<UserInput, Never>
-    typealias UserInputPublisher = AnyPublisher<UserInput, Never>
+    typealias ActionSubject = PassthroughSubject<Action, Never>
+    typealias ActionPublisher = AnyPublisher<Action, Never>
 
     enum Status: Hashable, Error {
         case idle
@@ -26,7 +26,7 @@ enum SearchScreen {
         case viewDidLoad
     }
 
-    enum UserInput: Hashable {
+    enum Action: Hashable {
         case select(_ rowAt: Int)
         case search(_ query: String)
     }

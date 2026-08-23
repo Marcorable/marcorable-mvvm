@@ -71,7 +71,7 @@ extension SearchScreen.ViewController {
     }
 
     private func bindInput() {
-        context.userInputPublisher
+        context.actionPublisher
             .receive(on: DispatchQueue.main)
             .sink { [weak self] in
                 self?.viewModel.action(by: $0)
