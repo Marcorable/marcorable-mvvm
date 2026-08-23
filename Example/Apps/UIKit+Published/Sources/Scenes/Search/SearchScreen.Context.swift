@@ -20,9 +20,9 @@ extension SearchScreen {
 
         private let spinner: UIActivityIndicatorView = .init(style: .medium)
 
-        private let userInputSubject: UserInputSubject = .init()
+        private let userInputSubject: ActionSubject = .init()
 
-        var userInputPublisher: UserInputPublisher {
+        var userInputPublisher: ActionPublisher {
             userInputSubject.eraseToAnyPublisher()
         }
     }
@@ -98,7 +98,7 @@ extension SearchScreen.Context: UISearchResultsUpdating {
 
     func updateSearchResults(for searchController: UISearchController) {
         let query = searchController.searchBar.text ?? ""
-        self.userInputSubject.send(.search(query))
+        self.userInputSubject.send(.input(query))
     }
 
 }

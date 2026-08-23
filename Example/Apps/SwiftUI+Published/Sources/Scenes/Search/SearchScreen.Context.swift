@@ -8,6 +8,8 @@ extension SearchScreen {
     struct Context: View {
         @StateObject private var viewModel: ViewModel
 
+        @Environment(\.mainStack) var mainStackAction
+
         init(viewModel: ViewModel) {
             _viewModel = StateObject(wrappedValue: viewModel)
         }
@@ -25,17 +27,25 @@ extension SearchScreen {
                     if rows.isEmpty {
                         ContentUnavailableView.search
                     } else {
-                        List(rows, id: \.name) { row in
-                            NavigationLink(value: Screen.detail(row.name)) {
-                                AsyncImageLabelRow(model: row)
-                            }
+                        List(rows.indices, id: \.self) { index in
+                            Button(
+                                action: {
+                                    viewModel.action(by: .select(index))
+                                },
+                                label: {
+                                    AsyncImageLabelRow(model: rows[index])
+                                }
+                            )
                         }
                     }
                 }
             }
             .navigationTitle("SwiftUI + Published")
             .searchable(
-                text: $viewModel.input,
+                text: .init(
+                    get: { viewModel.input },
+                    set: { viewModel.action(by: .input($0)) }
+                ),
                 prompt: "GitHub 유저 검색"
             )
             .alert(
@@ -44,7 +54,7 @@ extension SearchScreen {
                     get: { viewModel.presentedAlertString != nil },
                     set: {
                         if !$0 {
-                            viewModel.presentedAlertString = nil
+                            viewModel.action(by: .dismiss)
                         }
                     }
                 ),
@@ -57,6 +67,9 @@ extension SearchScreen {
                     )
                 }
             )
+            .onReceive(viewModel.$route.compactMap({ $0 })) {
+                mainStackAction(.push(contentsOf: [$0]))
+            }
         }
     }
 

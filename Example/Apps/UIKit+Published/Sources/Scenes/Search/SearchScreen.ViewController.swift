@@ -72,47 +72,9 @@ extension SearchScreen.ViewController {
 
     private func bindInput() {
         context.userInputPublisher
-            .compactMap({
-                guard case .search(let query) = $0 else { return nil }
-                return query
-            })
-            .assign(to: &viewModel.$input)
-
-        context.userInputPublisher
-            .compactMap({
-                guard case .select(let index) = $0 else { return nil }
-                return index
-            })
-            .compactMap({ [weak self] in
-                self?.viewModel.rows?[safe: $0]?.name
-            })
+            .receive(on: DispatchQueue.main)
             .sink { [weak self] in
-                self?.navigationController?.pushViewController(
-                    UIHostingController(
-                        rootView: SceneFactory.makeScene(by: .detail($0))
-                            .environment(\.mainStack) { [weak self] in
-                                switch $0 {
-                                    case .push(contentsOf: let screens):
-                                        self?.appCoordinator.action(
-                                            by: .push(
-                                                contentsOf: screens.map({
-                                                    UIHostingController(
-                                                        rootView: SceneFactory.makeScene(by: $0)
-                                                    )
-                                                })
-                                            )
-                                        )
-
-                                    case .pop(let count):
-                                        self?.appCoordinator.action(by: .pop(count: count))
-
-                                    case .popToRoot:
-                                        self?.appCoordinator.action(by: .popToRoot)
-                                }
-                            }
-                    ),
-                    animated: true
-                )
+                self?.viewModel.action(by: $0)
             }
             .store(in: &cancellableSet)
     }
@@ -121,7 +83,6 @@ extension SearchScreen.ViewController {
         viewModel.$isLoading
             .prepend(false)
             .combineLatest(viewModel.$rows.map({ $0?.isEmpty }))
-            .receive(on: DispatchQueue.main)
             .sink { [weak self] isLoading, isEmpty in
                 self?.context.showLoading(isLoading)
                 if isLoading {
@@ -164,6 +125,41 @@ extension SearchScreen.ViewController {
                     toSection: .main
                 )
                 self?.dataSource.apply(snapshot, animatingDifferences: false)
+            }
+            .store(in: &cancellableSet)
+
+        viewModel.$route
+            .compactMap({
+                guard case .detail(let login) = $0 else { return nil }
+                return login
+            })
+            .sink { [weak self] in
+                self?.navigationController?.pushViewController(
+                    UIHostingController(
+                        rootView: SceneFactory.makeScene(by: .detail($0))
+                            .environment(\.mainStack) { [weak self] in
+                                switch $0 {
+                                    case .push(contentsOf: let screens):
+                                        self?.appCoordinator.action(
+                                            by: .push(
+                                                contentsOf: screens.map({
+                                                    UIHostingController(
+                                                        rootView: SceneFactory.makeScene(by: $0)
+                                                    )
+                                                })
+                                            )
+                                        )
+
+                                    case .pop(let count):
+                                        self?.appCoordinator.action(by: .pop(count: count))
+
+                                    case .popToRoot:
+                                        self?.appCoordinator.action(by: .popToRoot)
+                                }
+                            }
+                    ),
+                    animated: true
+                )
             }
             .store(in: &cancellableSet)
     }

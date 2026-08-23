@@ -10,6 +10,12 @@ enum SearchScreen {
         }
     }
 
+    enum Action: Hashable {
+        case input(String)
+        case dismiss
+        case select(_ rowAt: Int)
+    }
+
 }
 
 extension SearchScreen {
