@@ -18,11 +18,13 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let appCoordinator: AppCoordinator = .init(by: navigationController)
         navigationController.setViewControllers(
             [
-                SearchViewController(
+                SearchScreen.ViewController(
                     appCoordinator: appCoordinator,
-                    viewModel: SearchViewModel(
-                        dependency: .init(
-                            repository: RepositoryFactory.makeUserRepository()
+                    viewModel: .init(
+                        model: .init(
+                            dependency: .init(
+                                repository: RepositoryFactory.makeUserRepository()
+                            )
                         )
                     )
                 )

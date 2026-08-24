@@ -31,6 +31,8 @@ extension SearchScreen.Model {
         do {
             let users = try await dependency.repository.searchUsers(by: trimmed)
             return .success(users)
+        } catch is CancellationError {
+            return .failure(.idle)
         } catch {
             return .failure(.alert(.localized(error.localizedDescription)))
         }

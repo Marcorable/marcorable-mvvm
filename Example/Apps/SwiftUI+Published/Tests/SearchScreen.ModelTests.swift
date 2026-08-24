@@ -61,4 +61,17 @@ extension SearchScreenModelTests {
         XCTAssertFalse(message.isEmpty)
     }
 
+    func testCancellationFailsWithIdle() async {
+        let model = makeModel(MockUserRepository(delay: .seconds(1)))
+
+        let task = Task { await model.search(by: "octo") }
+        task.cancel()
+
+        let result = await task.value
+        guard case .failure(let state) = result else {
+            return XCTFail("취소는 .idle 실패여야 한다: \(result)")
+        }
+        XCTAssertEqual(state, .idle)
+    }
+
 }
