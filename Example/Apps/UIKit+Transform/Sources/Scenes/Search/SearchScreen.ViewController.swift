@@ -61,7 +61,7 @@ extension SearchScreen.ViewController {
                         }
                     })
                     .eraseToAnyPublisher(),
-                actionPublisher: context.actionPublisher
+                intentPublisher: context.intentPublisher
             )
         )
         bind(

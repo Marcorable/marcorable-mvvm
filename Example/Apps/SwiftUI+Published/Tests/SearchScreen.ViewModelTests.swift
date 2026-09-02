@@ -27,7 +27,7 @@ extension SearchScreenViewModelTests {
             .sink { _ in loaded.fulfill() }
             .store(in: &cancellableSet)
 
-        viewModel.action(by: .input("octo"))
+        viewModel.reduce(by: .input("octo"))
 
         wait(for: [loaded], timeout: 2)
         XCTAssertEqual(
@@ -45,10 +45,10 @@ extension SearchScreenViewModelTests {
             .sink { _ in loadingCount += 1 }
             .store(in: &cancellableSet)
 
-        viewModel.action(by: .input("o"))
-        viewModel.action(by: .input("oc"))
-        viewModel.action(by: .input("oct"))
-        viewModel.action(by: .input("octo"))
+        viewModel.reduce(by: .input("o"))
+        viewModel.reduce(by: .input("oc"))
+        viewModel.reduce(by: .input("oct"))
+        viewModel.reduce(by: .input("octo"))
 
         let debounced = expectation(description: "디바운스 경과")
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
@@ -62,7 +62,7 @@ extension SearchScreenViewModelTests {
     func testWhitespaceOnlyQueryKeepsBoardEmpty() {
         let viewModel = SearchScreen.ViewModel(model: .mock)
 
-        viewModel.action(by: .input("   "))
+        viewModel.reduce(by: .input("   "))
 
         let debounced = expectation(description: "디바운스 경과")
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {

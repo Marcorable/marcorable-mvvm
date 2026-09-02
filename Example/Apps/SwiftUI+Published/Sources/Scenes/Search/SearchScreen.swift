@@ -10,7 +10,7 @@ enum SearchScreen {
         }
     }
 
-    enum Action: Hashable {
+    enum Intent: Hashable {
         case input(String)
         case dismiss
         case select(_ rowAt: Int)

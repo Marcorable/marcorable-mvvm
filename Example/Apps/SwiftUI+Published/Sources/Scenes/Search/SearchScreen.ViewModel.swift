@@ -25,10 +25,10 @@ extension SearchScreen {
 }
 
 extension SearchScreen.ViewModel {
-    typealias Action = SearchScreen.Action
+    typealias Intent = SearchScreen.Intent
 
-    func action(by action: Action) {
-        switch action {
+    func reduce(by intent: Intent) {
+        switch intent {
             case .input(let text):
                 let previous = self.input
                 let trimmed = text.trimmingCharacters(in: .whitespaces)
