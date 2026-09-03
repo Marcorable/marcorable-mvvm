@@ -10,11 +10,14 @@ extension SearchScreen {
     @MainActor
     @Observable
     final class ViewModel {
-        var input = ""
-        var isLoading: Bool = false
-        var presentedAlertString: String?
+        private(set) var input = ""
+        private(set) var isLoading: Bool = false
+        private(set) var presentedAlertString: String?
+        private(set) var route: Screen?
 
         private(set) var rows: [Row.Model]?
+
+        private var debounceTask: Task<Void, Never>?
         private let model: Model
 
         init(model: Model) {
@@ -25,25 +28,65 @@ extension SearchScreen {
 }
 
 extension SearchScreen.ViewModel {
+    typealias Intent = SearchScreen.Intent
 
-    var trimmedInput: String { input.trimmingCharacters(in: .whitespaces) }
+    func reduce(by intent: Intent) {
+        switch intent {
+            case .input(let text):
+                let previous = self.input
+                self.input = text
+                guard previous != text else {
+                    return
+                }
+                search(by: text)
 
-    func search() async {
-        guard !trimmedInput.isEmpty else {
+            case .dismiss:
+                self.presentedAlertString = nil
+
+            case .select(let index):
+                guard let row = rows?[safe: index] else {
+                    return
+                }
+                self.route = .detail(row.name)
+        }
+    }
+
+    private func search(by text: String) {
+        let query = text.trimmingCharacters(in: .whitespaces)
+        guard !query.isEmpty else {
+            self.debounceTask?.cancel()
+            self.rows = nil
+            self.isLoading = false
             return
         }
 
-        self.isLoading = true
-
-        let result = await model.search(by: trimmedInput)
-
-        switch result {
-            case .success(let users):
-                self.rows = users.map({ .init($0) })
+        debounceTask?.cancel()
+        debounceTask = Task {
+            try? await Task.sleep(for: .milliseconds(SearchScreen.debounce))
+            guard !Task.isCancelled else {
+                return
+            }
+            await MainActor.run {
+                self.isLoading = true
+            }
+            let result = await model.search(by: query)
+            await MainActor.run {
                 self.isLoading = false
-
-            case .failure(let status):
-                update(by: status)
+                
+                switch result {
+                    case .success(let users):
+                        self.rows = users
+                            .map({
+                                .init(
+                                    name: $0.login,
+                                    imageUrl: $0.avatarURL.flatMap(URL.init(string:))
+                                )
+                            })
+                        
+                    case .failure(let status):
+                        update(by: status)
+                }
+            }
         }
     }
 
@@ -51,6 +94,7 @@ extension SearchScreen.ViewModel {
 
 extension SearchScreen.ViewModel {
     typealias Status = SearchScreen.Status
+
     typealias Row = AsyncImageLabelRow
 
     private func update(by status: Status) {

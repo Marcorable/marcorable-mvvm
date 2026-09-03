@@ -7,13 +7,15 @@ extension SearchScreen {
     struct Context: View {
         @State private var viewModel: ViewModel
 
+        @Environment(\.mainStack) var mainStackAction
+
         init(viewModel: ViewModel) {
             _viewModel = State(wrappedValue: viewModel)
         }
 
         var body: some View {
             Group {
-                if viewModel.trimmedInput.isEmpty {
+                if viewModel.input.isEmpty {
                     ContentUnavailableView(
                         "검색어를 입력해보세요",
                         systemImage: "magnifyingglass"
@@ -24,36 +26,32 @@ extension SearchScreen {
                     if rows.isEmpty {
                         ContentUnavailableView.search
                     } else {
-                        List(rows, id: \.name) { row in
-                            NavigationLink(value: Screen.detail(row.name)) {
-                                AsyncImageLabelRow(model: row)
-                            }
+                        List(rows.indices, id:\.self) { index in
+                            Button(
+                                action: { viewModel.reduce(by: .select(index)) },
+                                label: {
+                                    AsyncImageLabelRow(model: rows[index])
+                                }
+                            )
                         }
                     }
                 }
             }
             .navigationTitle("SwiftUI + Observable")
             .searchable(
-                text: .init( // @Bindable var viewModel = viewModel 사용가능
+                text: .init(
                     get: { viewModel.input },
-                    set: { viewModel.input = $0 }
+                    set: { viewModel.reduce(by: .input($0)) }
                 ),
                 prompt: "GitHub 유저 검색"
             )
-            .task(id: viewModel.trimmedInput) {
-                try? await Task.sleep(for: .milliseconds(SearchScreen.debounce))
-                guard !Task.isCancelled else {
-                    return
-                }
-                await viewModel.search()
-            }
             .alert(
                 "불러오기 실패",
                 isPresented: .init(
                     get: { viewModel.presentedAlertString != nil },
                     set: {
                         if !$0 {
-                            viewModel.presentedAlertString = nil
+                            viewModel.reduce(by: .dismiss)
                         }
                     }
                 ),
@@ -66,6 +64,12 @@ extension SearchScreen {
                     )
                 }
             )
+            .onChange(of: viewModel.route, initial: false) { oldValue, newValue in
+                guard oldValue == nil, let screen = newValue else {
+                    return
+                }
+                mainStackAction(.push(contentsOf: [screen]))
+            }
         }
     }
 
