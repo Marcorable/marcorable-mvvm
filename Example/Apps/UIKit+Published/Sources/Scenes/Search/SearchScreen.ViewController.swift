@@ -71,10 +71,10 @@ extension SearchScreen.ViewController {
     }
 
     private func bindInput() {
-        context.actionPublisher
+        context.intentPublisher
             .receive(on: DispatchQueue.main)
             .sink { [weak self] in
-                self?.viewModel.action(by: $0)
+                self?.viewModel.reduce(by: $0)
             }
             .store(in: &cancellableSet)
     }

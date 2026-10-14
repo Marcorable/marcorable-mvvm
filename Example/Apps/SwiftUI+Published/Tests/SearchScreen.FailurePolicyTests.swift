@@ -31,12 +31,12 @@ extension SearchScreenFailurePolicyTests {
         let repository = MockUserRepository()
         let viewModel = makeViewModel(repository)
 
-        viewModel.action(by: .input("octo"))
+        viewModel.reduce(by: .input("octo"))
         settle()
         XCTAssertEqual(viewModel.rows?.map(\.name), ["octocat", "octodog"])
 
         repository.error = SharedKitError.invalidResponse
-        viewModel.action(by: .input("swift"))
+        viewModel.reduce(by: .input("swift"))
         settle()
 
         XCTAssertNotNil(viewModel.presentedAlertString)
@@ -49,13 +49,13 @@ extension SearchScreenFailurePolicyTests {
         let viewModel = makeViewModel(repository)
 
         repository.error = SharedKitError.invalidResponse
-        viewModel.action(by: .input("octo"))
+        viewModel.reduce(by: .input("octo"))
         settle()
         XCTAssertNotNil(viewModel.presentedAlertString)
 
-        viewModel.action(by: .dismiss)
+        viewModel.reduce(by: .dismiss)
         repository.error = nil
-        viewModel.action(by: .input("octod"))
+        viewModel.reduce(by: .input("octod"))
         settle()
 
         XCTAssertEqual(viewModel.rows?.map(\.name), ["octodog"])
@@ -67,11 +67,11 @@ extension SearchScreenFailurePolicyTests {
         let repository = MockUserRepository()
         let viewModel = makeViewModel(repository)
 
-        viewModel.action(by: .input("octo"))
+        viewModel.reduce(by: .input("octo"))
         settle()
         XCTAssertEqual(viewModel.rows?.map(\.name), ["octocat", "octodog"])
 
-        viewModel.action(by: .input(""))
+        viewModel.reduce(by: .input(""))
         settle()
 
         XCTAssertNil(viewModel.rows)

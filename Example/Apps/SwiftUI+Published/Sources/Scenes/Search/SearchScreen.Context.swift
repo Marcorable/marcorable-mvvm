@@ -30,7 +30,7 @@ extension SearchScreen {
                         List(rows.indices, id: \.self) { index in
                             Button(
                                 action: {
-                                    viewModel.action(by: .select(index))
+                                    viewModel.reduce(by: .select(index))
                                 },
                                 label: {
                                     AsyncImageLabelRow(model: rows[index])
@@ -44,7 +44,7 @@ extension SearchScreen {
             .searchable(
                 text: .init(
                     get: { viewModel.input },
-                    set: { viewModel.action(by: .input($0)) }
+                    set: { viewModel.reduce(by: .input($0)) }
                 ),
                 prompt: "GitHub 유저 검색"
             )
@@ -54,7 +54,7 @@ extension SearchScreen {
                     get: { viewModel.presentedAlertString != nil },
                     set: {
                         if !$0 {
-                            viewModel.action(by: .dismiss)
+                            viewModel.reduce(by: .dismiss)
                         }
                     }
                 ),

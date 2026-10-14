@@ -8,23 +8,26 @@
 
 | 예제 | UI | 바인딩 | 디바운스 | 내비게이션 주체 |
 |---|---|---|---|---|
-| UIKit+Published | UIKit | `@Published` 상태를 VC가 직접 구독, 입력은 `Action` | ViewModel (Task 취소) | VC (`$route` 구독) |
+| UIKit+Published | UIKit | `@Published` 상태를 VC가 직접 구독, 입력은 `Intent` | ViewModel (Task 취소) | VC (`$route` 구독) |
 | UIKit+Transform | UIKit | Combine Input/Output transform | ViewModel (연산자) | VC (`status` 스트림) |
-| SwiftUI+Published | SwiftUI | `ObservableObject` + `@Published`, 입력은 `Action` | ViewModel (Task 취소) | `NavigationStack` (View) |
-| SwiftUI+Observable | SwiftUI | `@Observable` (iOS 17+) | View (`.task(id:)`) | `NavigationStack` (View) |
+| SwiftUI+Published | SwiftUI | `ObservableObject` + `@Published`, 입력은 `Intent` | ViewModel (Task 취소) | `NavigationStack` (View) |
+| SwiftUI+Observable | SwiftUI | `@Observable` (iOS 17+), 입력은 `Intent` | ViewModel (Task 취소) | `NavigationStack` (View) |
 
 ## 관전 포인트
 
 1. **파일 대 파일 비교** — 네 변형 모두 `SearchScreen.*` 구조를 쓴다.
    `Model`은 네 곳이 사실상 동일하고, 차이는 전부 `ViewModel`과 View 레이어에 있다.
+   입력은 네 변형 모두 `Intent` enum으로 표현한다 — Published 둘과 Observable은
+   `reduce(by:)` 하나로, Transform은 Input 스트림으로 받는다.
 2. **디바운스 구현** — Transform만 Combine 연산자이고, 나머지 셋은 전부
-   **Task 취소(sleep + 취소 확인)**다. 그 안에서도 소유자가 갈린다:
-   Published 둘은 ViewModel이, Observable은 View(`.task(id:)`)가 쥔다.
+   ViewModel이 쥔 **Task 취소(sleep + 취소 확인)**다. 세 ViewModel의 `reduce(by:)`와
+   디바운스 구현은 같고, 상태를 노출하는 방식(`@Published` / `@Observable`)만 다르다.
 3. **취소 전파** — Task 취소 계열은 구조적 동시성으로 네트워크 요청까지 중단되고,
    Transform의 `Future` 브릿지는 결과만 폐기한다(`switchToLatest`).
    어느 쪽이든 취소가 얼럿으로 새지 않도록 Model이 `CancellationError → .idle`로 변환한다.
-4. **테스트 난이도** — Observable은 대기 없이 `await search()` 한 줄.
-   Published 둘은 디바운스 경과를 기다리는 `settle()` 벽시계 대기.
+4. **테스트 난이도** — Published 둘과 Observable은 디바운스 경과를 기다리는 `settle()` 벽시계 대기.
+   Observable은 퍼블리셔가 없어 중간 과정(연속 입력 시 검색 1회)을
+   상태 구독 대신 저장소 호출 기록으로 단언한다.
    Transform은 Input에 값을 흘리고 Output을 expectation으로 수집한다.
 5. **공통 정책** — 네 변형이 같은 화면 정책을 공유하고 `FailurePolicyTests`가
    같은 이름의 시나리오로 단언한다: 실패 시 이전 rows 유지 + alert,

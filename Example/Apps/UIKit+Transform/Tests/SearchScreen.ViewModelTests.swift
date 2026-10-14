@@ -23,17 +23,17 @@ final class SearchScreenViewModelTests: XCTestCase {
 
     private func makeInput(
         viewLife viewLifeSubject: SearchScreen.ViewLifeSubject = .init(),
-        action actionSubject: SearchScreen.ActionSubject = .init()
+        intent intentSubject: SearchScreen.IntentSubject = .init()
     ) -> (
         input: SearchScreen.ViewModel.Input,
         viewLife: SearchScreen.ViewLifeSubject,
-        action: SearchScreen.ActionSubject
+        intent: SearchScreen.IntentSubject
     ) {
         let input = SearchScreen.ViewModel.Input(
             viewLifePublisher: viewLifeSubject.eraseToAnyPublisher(),
-            actionPublisher: actionSubject.eraseToAnyPublisher()
+            intentPublisher: intentSubject.eraseToAnyPublisher()
         )
-        return (input, viewLifeSubject, action: actionSubject)
+        return (input, viewLifeSubject, intent: intentSubject)
     }
 
     private func settle(_ seconds: TimeInterval = 1) {
@@ -65,7 +65,7 @@ extension SearchScreenViewModelTests {
 
     func testQueryEmitsRows() {
         let viewModel = makeViewModel()
-        let (input, _, action) = makeInput()
+        let (input, _, intent) = makeInput()
         let output = viewModel.transform(input)
 
         let loaded = expectation(description: "rows 채워짐")
@@ -74,7 +74,7 @@ extension SearchScreenViewModelTests {
             .sink { _ in loaded.fulfill() }
             .store(in: &cancellableSet)
 
-        action.send(.search("octo"))
+        intent.send(.search("octo"))
         wait(for: [loaded], timeout: 2)
 
         var lastRows: [SearchScreen.Row.Model]?
@@ -91,7 +91,7 @@ extension SearchScreenViewModelTests {
 
     func testWhitespaceOnlyQueryKeepsRowsNil() {
         let viewModel = makeViewModel()
-        let (input, _, action) = makeInput()
+        let (input, _, intent) = makeInput()
         let output = viewModel.transform(input)
 
         var latestRows: [SearchScreen.Row.Model]?
@@ -99,7 +99,7 @@ extension SearchScreenViewModelTests {
             .sink { latestRows = $0 }
             .store(in: &cancellableSet)
 
-        action.send(.search("   "))
+        intent.send(.search("   "))
         settle()
 
         XCTAssertNil(latestRows)
@@ -107,7 +107,7 @@ extension SearchScreenViewModelTests {
 
     func testRapidQueriesTriggerSingleSearch() {
         let viewModel = makeViewModel()
-        let (input, _, action) = makeInput()
+        let (input, _, intent) = makeInput()
         let output = viewModel.transform(input)
 
         output.rowsPublisher
@@ -120,10 +120,10 @@ extension SearchScreenViewModelTests {
             .sink { _ in loadingCount += 1 }
             .store(in: &cancellableSet)
 
-        action.send(.search("o"))
-        action.send(.search("oc"))
-        action.send(.search("oct"))
-        action.send(.search("octo"))
+        intent.send(.search("o"))
+        intent.send(.search("oc"))
+        intent.send(.search("oct"))
+        intent.send(.search("octo"))
         settle()
 
         XCTAssertEqual(loadingCount, 1)
@@ -131,7 +131,7 @@ extension SearchScreenViewModelTests {
 
     func testSelectEmitsRouteStatus() {
         let viewModel = makeViewModel()
-        let (input, _, action) = makeInput()
+        let (input, _, intent) = makeInput()
         let output = viewModel.transform(input)
 
         output.rowsPublisher
@@ -145,7 +145,7 @@ extension SearchScreenViewModelTests {
             .sink { _ in loaded.fulfill() }
             .store(in: &cancellableSet)
 
-        action.send(.search("octo"))
+        intent.send(.search("octo"))
         wait(for: [loaded], timeout: 2)
 
         let routed = expectation(description: "route 상태 방출")
@@ -159,7 +159,7 @@ extension SearchScreenViewModelTests {
             }
             .store(in: &cancellableSet)
 
-        action.send(.select(0))
+        intent.send(.select(0))
         wait(for: [routed], timeout: 2)
 
         XCTAssertEqual(routeLogin, "octocat")
@@ -167,7 +167,7 @@ extension SearchScreenViewModelTests {
 
     func testSelectOutOfBoundsDoesNotCrash() {
         let viewModel = makeViewModel()
-        let (input, _, action) = makeInput()
+        let (input, _, intent) = makeInput()
         let output = viewModel.transform(input)
 
         output.rowsPublisher
@@ -181,7 +181,7 @@ extension SearchScreenViewModelTests {
             .sink { _ in loaded.fulfill() }
             .store(in: &cancellableSet)
 
-        action.send(.search("octo"))
+        intent.send(.search("octo"))
         wait(for: [loaded], timeout: 2)
 
         var routed = false
@@ -191,7 +191,7 @@ extension SearchScreenViewModelTests {
             }
             .store(in: &cancellableSet)
 
-        action.send(.select(999))
+        intent.send(.select(999))
         settle()
 
         XCTAssertFalse(routed)

@@ -20,10 +20,10 @@ extension SearchScreen {
 
         private let spinner: UIActivityIndicatorView = .init(style: .medium)
 
-        private let actionSubject: ActionSubject = .init()
+        private let intentSubject: IntentSubject = .init()
 
-        var actionPublisher: ActionPublisher {
-            actionSubject.eraseToAnyPublisher()
+        var intentPublisher: IntentPublisher {
+            intentSubject.eraseToAnyPublisher()
         }
     }
 
@@ -89,7 +89,7 @@ extension SearchScreen.Context: UITableViewDelegate {
         didSelectRowAt indexPath: IndexPath
     ) {
         self.deselectRow(at: indexPath, animated: true)
-        self.actionSubject.send(.select(indexPath.row))
+        self.intentSubject.send(.select(indexPath.row))
     }
 
 }
@@ -98,7 +98,7 @@ extension SearchScreen.Context: UISearchResultsUpdating {
 
     func updateSearchResults(for searchController: UISearchController) {
         let query = searchController.searchBar.text ?? ""
-        self.actionSubject.send(.input(query))
+        self.intentSubject.send(.input(query))
     }
 
 }

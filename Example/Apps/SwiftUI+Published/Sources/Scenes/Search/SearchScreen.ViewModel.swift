@@ -13,6 +13,7 @@ extension SearchScreen {
         @Published private(set) var route: Screen?
 
         @Published private(set) var rows: [Row.Model]?
+
         private let model: Model
         private var debounceTask: Task<Void, Never>?
 
@@ -25,18 +26,17 @@ extension SearchScreen {
 }
 
 extension SearchScreen.ViewModel {
-    typealias Action = SearchScreen.Action
+    typealias Intent = SearchScreen.Intent
 
-    func action(by action: Action) {
-        switch action {
+    func reduce(by intent: Intent) {
+        switch intent {
             case .input(let text):
                 let previous = self.input
-                let trimmed = text.trimmingCharacters(in: .whitespaces)
                 self.input = text
-                guard previous != trimmed else {
+                guard previous != text else {
                     return
                 }
-                search(by: trimmed)
+                search(by: text)
 
             case .dismiss:
                 self.presentedAlertString = nil
@@ -55,8 +55,9 @@ extension SearchScreen.ViewModel {
     typealias Status = SearchScreen.Status
     typealias Row = AsyncImageLabelRow
 
-    private func search(by trimmedText: String) {
-        guard !trimmedText.isEmpty else {
+    private func search(by text: String) {
+        let query = text.trimmingCharacters(in: .whitespaces)
+        guard !query.isEmpty else {
             self.debounceTask?.cancel()
             self.rows = nil
             self.isLoading = false
@@ -72,18 +73,19 @@ extension SearchScreen.ViewModel {
             await MainActor.run {
                 self.isLoading = true
             }
-            let result = await model.search(by: trimmedText)
+            let result = await model.search(by: query)
             await MainActor.run {
                 self.isLoading = false
-
+                
                 switch result {
                     case .success(let users):
-                        self.rows = users.map({
-                            .init(
-                                name: $0.login,
-                                imageUrl: $0.avatarURL.flatMap(URL.init(string:))
-                            )
-                        })
+                        self.rows = users
+                            .map({
+                                .init(
+                                    name: $0.login,
+                                    imageUrl: $0.avatarURL.flatMap(URL.init(string:))
+                                )
+                            })
 
                     case .failure(let status):
                         update(by: status)
