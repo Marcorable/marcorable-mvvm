@@ -1,4 +1,4 @@
-# MarcorableMVVM
+# marcorable-mvvm
 
 MVVM 디자인패턴을 다양하게 고민해본다.
 
@@ -9,7 +9,7 @@ MVVM 디자인패턴을 다양하게 고민해본다.
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/Marcorable/MarcorableMVVM.git", from: "0.1.0")
+    .package(url: "https://github.com/Marcorable/marcorable-mvvm.git", from: "0.1.0")
 ]
 ```
 
@@ -17,7 +17,7 @@ dependencies: [
 .target(
     name: "MyApp",
     dependencies: [
-        .product(name: "NavigationCoordinator", package: "MarcorableMVVM")
+        .product(name: "NavigationCoordinator", package: "marcorable-mvvm")
     ]
 )
 ```
@@ -49,7 +49,7 @@ public enum NavigationAction<Screen: Hashable>: Hashable {
 ## 구조
 
 ```
-MarcorableMVVM/
+marcorable-mvvm/
 ├── Package.swift             # SPM 패키지 (product: NavigationCoordinator)
 ├── Sources/NavigationCoordinator/
 └── Example/                  # 예제 워크스페이스 (배포물에 포함되지 않음)

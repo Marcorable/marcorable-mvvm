@@ -2,7 +2,7 @@
 import PackageDescription
 
 let package = Package(
-    name: "MarcorableMVVM",
+    name: "marcorable-mvvm",
     platforms: [.iOS(.v17), .macOS(.v14)],
     products: [
         .library(name: "NavigationCoordinator", targets: ["NavigationCoordinator"])

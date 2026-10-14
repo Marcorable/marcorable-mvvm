@@ -17,14 +17,14 @@ let package = Package(
             name: "CommonScene",
             dependencies: [
                 "SharedKit",
-                .product(name: "NavigationCoordinator", package: "MarcorableMVVM"),
+                .product(name: "NavigationCoordinator", package: "marcorable-mvvm"),
             ],
             path: "Sources/Scene"
         ),
         .target(
             name: "CommonUIKit",
             dependencies: [
-                .product(name: "NavigationCoordinator", package: "MarcorableMVVM"),
+                .product(name: "NavigationCoordinator", package: "marcorable-mvvm"),
             ],
             path: "Sources/UIKit"
         ),
