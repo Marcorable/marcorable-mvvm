@@ -3,7 +3,7 @@
 MVVM 디자인패턴을 다양하게 고민해본다.
 
 화면 전환을 추상화한 `NavigationCoordinator`를 제공하는 Swift 패키지이고,
-같은 앱을 네 가지 MVVM 변형으로 구현한 예제 워크스페이스를 `Example/`에 함께 담았다.
+같은 앱을 다섯 가지 MVVM 변형으로 구현한 예제 워크스페이스를 `Example/`에 함께 담았다.
 
 ## 설치
 
@@ -58,7 +58,8 @@ marcorable-mvvm/
     │   ├── UIKit+Published       # @Published 상태를 VC가 직접 구독 (기본형)
     │   ├── UIKit+Transform       # Combine Input/Output transform 패턴
     │   ├── SwiftUI+Published     # ObservableObject + @Published
-    │   └── SwiftUI+Observable    # @Observable (iOS 17+), 순수 async/await
+    │   ├── SwiftUI+Observable    # @Observable (iOS 17+), 순수 async/await
+    │   └── SwiftUI+TCA          # TCA @Reducer, 결정론적 테스트
     ├── Packages/
     │   ├── SharedKit             # 공유 Domain(모델·프로토콜) + Data(GitHub API·Mock)
     │   └── Common                # 공용 화면(Detail) + 백엔드별 코디네이터
