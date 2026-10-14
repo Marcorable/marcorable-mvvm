@@ -1,6 +1,6 @@
-# MarcorableMVVM
+# marcorable-mvvm
 
-레포 루트는 `NavigationCoordinator` 라이브러리를 배포하는 **MarcorableMVVM SPM 패키지**다
+레포 루트는 `NavigationCoordinator` 라이브러리를 배포하는 **marcorable-mvvm SPM 패키지**다
 (`Package.swift` + `Sources/NavigationCoordinator/`).
 예제 워크스페이스 일체는 `Example/` 아래에 있다 — 앱은 `Example/Apps/`,
 보조 패키지(SharedKit·Common)는 `Example/Packages/`, Tuist 매니페스트와 스크립트도 `Example/`.
