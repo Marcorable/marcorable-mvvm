@@ -12,7 +12,8 @@ public struct MainNavigationStack<RootView: View>: View {
     }
 
     @State private var path: [Screen] = []
-    
+    @State private var navigator: Navigator<Screen> = .init()
+
     public var body: some View {
         NavigationStack(path: $path) {
             rootView
@@ -20,9 +21,10 @@ public struct MainNavigationStack<RootView: View>: View {
                     SceneFactory.makeScene(by: $0)
                 }
         }
-        .environment(\.mainStack) {
+        .environment(navigator)
+        .onReceive(navigator.actionPublisher) {
             switch $0 {
-                case .push(contentsOf: let screens):
+                case .push(let screens):
                     path.append(contentsOf: screens)
 
                 case .pop(let count):
@@ -37,6 +39,9 @@ public struct MainNavigationStack<RootView: View>: View {
 
                 case .popToRoot:
                     path.removeAll()
+
+                case .restack(let screens):
+                    path = screens
             }
         }
     }
