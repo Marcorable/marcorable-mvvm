@@ -100,5 +100,6 @@ extension DetailView {
             )
         )
     }
+    .environment(Navigator<Screen>())
 }
 #endif

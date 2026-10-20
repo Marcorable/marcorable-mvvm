@@ -6,8 +6,11 @@ import Observation
 @Observable
 public class Navigator<Screen: Hashable> {
     private let actionSubject: PassthroughSubject<Action, Never> = .init()
+    public let actionPublisher: AnyPublisher<Action, Never>
 
-    public init() {}
+    public init() {
+        self.actionPublisher = actionSubject.eraseToAnyPublisher()
+    }
 
 }
 
@@ -20,28 +23,12 @@ extension Navigator {
         case restack(contentsOf: [Screen])
     }
 
-    public var actionPublisher: AnyPublisher<Action, Never> {
-        actionSubject.eraseToAnyPublisher()
-    }
-
-}
-
-extension Navigator: NavigationCoordinator {
-
     public func push(contentsOf screens: [Screen]) {
         actionSubject.send(.push(contentsOf: screens))
     }
 
-    public func push(_ screen: Screen) {
-        actionSubject.send(.push(contentsOf: [screen]))
-    }
-
     public func pop(by count: Int) {
         actionSubject.send(.pop(count: count))
-    }
-
-    public func pop() {
-        actionSubject.send(.pop(count: 1))
     }
 
     public func popToRoot() {
@@ -53,3 +40,5 @@ extension Navigator: NavigationCoordinator {
     }
 
 }
+
+extension Navigator: NavigationCoordinator {}

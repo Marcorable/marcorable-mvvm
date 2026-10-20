@@ -9,7 +9,7 @@ MVVM 디자인패턴을 다양하게 고민해본다.
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/Marcorable/marcorable-mvvm.git", from: "0.1.0")
+    .package(url: "https://github.com/Marcorable/marcorable-mvvm.git", from: "0.2.0")
 ]
 ```
 
@@ -24,27 +24,64 @@ dependencies: [
 
 ## NavigationCoordinator
 
-화면 스택 조작의 공통 제약이다. Screen이 무엇인지(라우트 enum, `UIViewController` 등)와
-백엔드가 무엇인지(`UINavigationController`, `NavigationStack`의 path)는 구현체가 결정한다.
+화면 스택 조작의 공통 제약이다. `Screen`의 구체적인 타입과 UIKit 또는 SwiftUI 같은
+네비게이션 백엔드는 구현체가 결정한다.
 
 ```swift
 @MainActor
-public protocol NavigationCoordinator: AnyObject {
+public protocol NavigationCoordinator {
     associatedtype Screen: Hashable
 
-    func action(by action: NavigationAction<Screen>)
-}
-
-public enum NavigationAction<Screen: Hashable>: Hashable {
-    case push(contentsOf: [Screen])
-    case pop(count: Int = 1)
-    case popToRoot
+    func push(contentsOf screens: [Screen])
+    func pop(by count: Int)
+    func popToRoot()
+    func restack(contentsOf screens: [Screen])
 }
 ```
 
-구현체는 `action(by:)` 하나만 구현하면 되고, UIKit이든 SwiftUI든 같은 어휘로 화면을 전환한다.
-실제 구현은 `Example/Packages/Common`의 `AppCoordinator`(UINavigationController)와
-`MainNavigationStack`(NavigationStack path)을 참고.
+단일 화면을 추가하는 `push(_:)`와 한 화면을 제거하는 `pop()`은 프로토콜 기본 구현으로 제공한다.
+
+`Navigator<Screen>`은 화면 전환 명령을 `actionPublisher`로 전달하는 기본 구현체다.
+
+```swift
+let navigator = Navigator<AppScreen>()
+
+navigator.actionPublisher
+    .sink { action in
+        switch action {
+            case .push(let screens):
+                break
+            case .pop(let count):
+                break
+            case .popToRoot:
+                break
+            case .restack(let screens):
+                break
+        }
+    }
+
+navigator.push(.detail)
+navigator.pop()
+```
+
+SwiftUI에서는 environment에 `Navigator`를 주입하고 화면에서 같은 인스턴스를 가져온다.
+
+```swift
+NavigationStack(path: $path) {
+    RootView()
+}
+.environment(navigator)
+.onReceive(navigator.actionPublisher) { action in
+    updatePath(with: action)
+}
+```
+
+UIKit에서는 `actionPublisher`를 `UINavigationController`의 스택 조작으로 변환한다.
+전체 구현은 `Example/Packages/Common`의 `UIKitNavigationBinding`과
+SwiftUI의 `MainNavigationStack`을 참고할 수 있다.
+
+0.2.0에서는 `NavigationAction`, `action(by:)`, `AppCoordinator`, `mainStack` environment API가
+제거되었다. 이전 버전 사용자는 화면 전환 호출을 `Navigator`의 메서드로 교체해야 한다.
 
 ## 구조
 

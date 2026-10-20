@@ -1,6 +1,5 @@
 
 import SwiftUI
-import Combine
 
 import SharedKit
 import CommonUIKit
@@ -9,7 +8,7 @@ import NavigationCoordinator
 
 final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
-    private var cancellableSet: Set<AnyCancellable> = .init()
+    private var navigationBinding: UIKitNavigationBinding<Screen>?
 
     func scene(
         _ scene: UIScene,
@@ -32,64 +31,21 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 extension SceneDelegate {
 
     private func setup(with navigationController: UINavigationController) { /// Presentation Module
-        let navigator: Navigator<Screen> = .init()
-        let actionPublisher = navigator.actionPublisher
-
-        actionPublisher
-            .receive(on: DispatchQueue.main)
-            .sink {
-                switch $0 {
-                    case .push(let screens):
-                        guard !screens.isEmpty else {
-                            return
-                        }
-                        let vcs = screens.map({
-                            UIHostingController(
-                                rootView: SceneFactory.makeScene(by: $0)
-                                    .environment(navigator)
-                            )
-                        })
-                        navigationController.setViewControllers(
-                            navigationController.viewControllers + vcs,
-                            animated: true
-                        )
-
-                    case .pop(let count):
-                        let stack = navigationController.viewControllers
-                        guard count > 0, stack.count > 1 else {
-                            return
-                        }
-                        let targetIndex = max(0, stack.count - 1 - count)
-                        navigationController.popToViewController(
-                            stack[targetIndex],
-                            animated: true
-                        )
-
-                    case .popToRoot:
-                        navigationController.popToRootViewController(animated: true)
-
-                    case .restack(let screens):
-                        guard let root = navigationController.viewControllers.first else {
-                            return
-                        }
-                        let vcs = screens.map({
-                            UIHostingController(
-                                rootView: SceneFactory.makeScene(by: $0)
-                                    .environment(navigator)
-                            )
-                        })
-                        navigationController.setViewControllers(
-                            [root] + vcs,
-                            animated: true
-                        )
-                }
+        let navigationBinding = UIKitNavigationBinding<Screen>(
+            navigationController: navigationController,
+            makeViewController: { screen, navigator in
+                UIHostingController(
+                    rootView: SceneFactory.makeScene(by: screen)
+                        .environment(navigator)
+                )
             }
-            .store(in: &cancellableSet)
+        )
+        self.navigationBinding = navigationBinding
 
         navigationController.setViewControllers(
             [
                 SearchScreen.ViewController(
-                    navigator: navigator,
+                    navigator: navigationBinding.navigator,
                     viewModel: .init(
                         model: .init(
                             dependency: .init(
