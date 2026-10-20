@@ -77,8 +77,8 @@ NavigationStack(path: $path) {
 ```
 
 UIKit에서는 `actionPublisher`를 `UINavigationController`의 스택 조작으로 변환한다.
-전체 구현은 `Example/Packages/Common`의 `UIKitNavigationBinding`과
-SwiftUI의 `MainNavigationStack`을 참고할 수 있다.
+전체 구현은 각 UIKit 예제의 `SceneDelegate`와 SwiftUI의 `MainNavigationStack`을
+참고할 수 있다.
 
 0.2.0에서는 `NavigationAction`, `action(by:)`, `AppCoordinator`, `mainStack` environment API가
 제거되었다. 이전 버전 사용자는 화면 전환 호출을 `Navigator`의 메서드로 교체해야 한다.

@@ -30,7 +30,7 @@ let package = Package(
         ),
         .testTarget(
             name: "CommonTests",
-            dependencies: ["CommonScene", "CommonUIKit"],
+            dependencies: ["CommonScene"],
             path: "Tests"
         )
     ]
