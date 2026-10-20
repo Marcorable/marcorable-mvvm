@@ -2,13 +2,14 @@
 import SwiftUI
 
 import CommonScene
+import NavigationCoordinator
 
 extension SearchScreen {
 
     struct Context: View {
         @StateObject private var viewModel: ViewModel
 
-        @Environment(\.mainStack) var mainStackAction
+        @Environment(Navigator<Screen>.self) private var navigator
 
         init(viewModel: ViewModel) {
             _viewModel = StateObject(wrappedValue: viewModel)
@@ -68,7 +69,7 @@ extension SearchScreen {
                 }
             )
             .onReceive(viewModel.$route.compactMap({ $0 })) {
-                mainStackAction(.push(contentsOf: [$0]))
+                navigator.push($0)
             }
         }
     }
@@ -80,5 +81,6 @@ extension SearchScreen {
     NavigationStack {
         SearchScreen.Context(viewModel: .mock)
     }
+    .environment(Navigator<Screen>())
 }
 #endif

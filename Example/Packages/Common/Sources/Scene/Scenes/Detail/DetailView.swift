@@ -2,9 +2,10 @@
 import SwiftUI
 
 import SharedKit
+import NavigationCoordinator
 
 struct DetailView: View {
-    @Environment(\.mainStack) private var mainStack
+    @Environment(Navigator<Screen>.self) private var navigator
     @StateObject private var viewModel: DetailViewModel
 
     init(viewModel: DetailViewModel) {
@@ -30,7 +31,7 @@ struct DetailView: View {
                         },
                         actions: {
                             Button(
-                                action: { mainStack(.pop()) },
+                                action: { navigator.pop() },
                                 label: { Text("돌아가기") }
                             )
                         }
@@ -99,5 +100,6 @@ extension DetailView {
             )
         )
     }
+    .environment(Navigator<Screen>())
 }
 #endif

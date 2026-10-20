@@ -8,6 +8,10 @@ let package = Package(
         .library(name: "NavigationCoordinator", targets: ["NavigationCoordinator"])
     ],
     targets: [
-        .target(name: "NavigationCoordinator", path: "Sources/NavigationCoordinator")
+        .target(name: "NavigationCoordinator", path: "Sources/NavigationCoordinator"),
+        .testTarget(
+            name: "NavigationCoordinatorTests",
+            dependencies: ["NavigationCoordinator"]
+        ),
     ]
 )

@@ -1,21 +1,22 @@
 
 import Combine
-import SwiftUI
+import UIKit
 
 import SharedKit
 import CommonScene
 import CommonUIKit
+import NavigationCoordinator
 
 extension SearchScreen {
 
     final class ViewController: PublishedViewLifeCycleViewController {
         private let context: Context
         private let dataSource: DataSource
-        private let appCoordinator: AppCoordinator
+        private let navigator: Navigator<Screen>
         private let viewModel: ViewModel
 
         init(
-            appCoordinator: AppCoordinator,
+            navigator: Navigator<Screen>,
             viewModel: ViewModel
         ) {
             let context = Context(
@@ -27,7 +28,7 @@ extension SearchScreen {
                 tableView: context,
                 cellProvider: SearchScreen.cellProvider
             )
-            self.appCoordinator = appCoordinator
+            self.navigator = navigator
             self.viewModel = viewModel
 
             super.init(nibName: nil, bundle: nil)
@@ -148,32 +149,7 @@ extension SearchScreen.ViewController {
                     case .route(let route):
                         switch route {
                             case .detail(let login):
-                                self?.navigationController?.pushViewController(
-                                    UIHostingController(
-                                        rootView: SceneFactory.makeScene(by: .detail(login))
-                                            .environment(\.mainStack) { [weak self] in
-                                                switch $0 {
-                                                    case .push(contentsOf: let screens):
-                                                        self?.appCoordinator.action(
-                                                            by: .push(
-                                                                contentsOf: screens.map({
-                                                                    UIHostingController(
-                                                                        rootView: SceneFactory.makeScene(by: $0)
-                                                                    )
-                                                                })
-                                                            )
-                                                        )
-
-                                                    case .pop(let count):
-                                                        self?.appCoordinator.action(by: .pop(count: count))
-
-                                                    case .popToRoot:
-                                                        self?.appCoordinator.action(by: .popToRoot)
-                                                }
-                                            }
-                                    ),
-                                    animated: true
-                                )
+                                self?.navigator.push(.detail(login))
                         }
 
                 }
